@@ -179,7 +179,7 @@ abstract class PhabricatorApplicationSearchEngine extends Phobject {
 
     $order = $saved->getParameter('order');
     $builtin = $query->getBuiltinOrderAliasMap();
-    if (strlen($order) && isset($builtin[$order])) {
+    if ($order && strlen($order) && isset($builtin[$order])) {
       $query->setOrder($order);
     } else {
       // If the order is invalid or not available, we choose the first
@@ -872,7 +872,7 @@ abstract class PhabricatorApplicationSearchEngine extends Phobject {
   protected function readBoolFromRequest(
     AphrontRequest $request,
     $key) {
-    if (!strlen($request->getStr($key))) {
+    if ($request->getStr($key) !== null && !strlen($request->getStr($key))) {
       return null;
     }
     return $request->getBool($key);

@@ -71,7 +71,7 @@ final class PhabricatorEditEngineProfileMenuItem
     if (!$form) {
       return pht('(Restricted/Invalid Form)');
     }
-    if (strlen($this->getName($config))) {
+    if ($this->getName($config) && strlen($this->getName($config))) {
       return $this->getName($config);
     } else {
       return $form->getName();

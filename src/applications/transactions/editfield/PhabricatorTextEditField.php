@@ -18,7 +18,7 @@ final class PhabricatorTextEditField
     $control = new AphrontFormTextControl();
 
     $placeholder = $this->getPlaceholder();
-    if (strlen($placeholder)) {
+    if ($placeholder && strlen($placeholder)) {
       $control->setPlaceholder($placeholder);
     }
 

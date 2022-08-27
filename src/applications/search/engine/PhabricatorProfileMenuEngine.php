@@ -135,7 +135,7 @@ abstract class PhabricatorProfileMenuEngine extends Phobject {
     if ($is_view) {
       $selected_item = $this->selectViewItem($view_list, $item_id);
     } else {
-      if (!strlen($item_id)) {
+      if (!$item_id || !strlen($item_id)) {
         $item_id = self::ITEM_MANAGE;
       }
       $selected_item = $this->selectEditItem($view_list, $item_id);
@@ -730,7 +730,7 @@ abstract class PhabricatorProfileMenuEngine extends Phobject {
 
       $name = $item->getDisplayName();
       $type = $item->getMenuItemTypeName();
-      if (!strlen(trim($name))) {
+      if (!$name || !strlen(trim($name))) {
         $name = pht('Untitled "%s" Item', $type);
       }
 
@@ -1308,7 +1308,7 @@ abstract class PhabricatorProfileMenuEngine extends Phobject {
     // render the default view instead.
 
     $selected_view = null;
-    if (strlen($item_id)) {
+    if ($item_id && strlen($item_id)) {
       $item_views = $view_list->getViewsWithItemIdentifier($item_id);
       if ($item_views) {
         $selected_view = head($item_views);

@@ -31,11 +31,11 @@ final class PhabricatorS3FileStorageEngine
     $endpoint = PhabricatorEnv::getEnvConfig('amazon-s3.endpoint');
     $region = PhabricatorEnv::getEnvConfig('amazon-s3.region');
 
-    return (strlen($bucket) &&
-      strlen($access_key) &&
-      strlen($secret_key) &&
-      strlen($endpoint) &&
-      strlen($region));
+    return ($bucket && strlen($bucket) &&
+      $access_key && strlen($access_key) &&
+      $secret_key && strlen($secret_key) &&
+      $endpoint && strlen($endpoint) &&
+      $region && strlen($region));
   }
 
 

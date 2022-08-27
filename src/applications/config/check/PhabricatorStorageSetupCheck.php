@@ -151,19 +151,19 @@ final class PhabricatorStorageSetupCheck extends PhabricatorSetupCheck {
 
     $how_many = 0;
 
-    if (strlen($access_key)) {
+    if ($access_key && strlen($access_key)) {
       $how_many++;
     }
 
-    if (strlen($secret_key)) {
+    if ($secret_key && strlen($secret_key)) {
       $how_many++;
     }
 
-    if (strlen($region)) {
+    if ($region && strlen($region)) {
       $how_many++;
     }
 
-    if (strlen($endpoint)) {
+    if ($endpoint && strlen($endpoint)) {
       $how_many++;
     }
 

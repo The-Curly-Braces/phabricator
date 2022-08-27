@@ -659,7 +659,7 @@ final class PHUIObjectItemView extends AphrontTagView {
         $this->getImageIcon());
     }
 
-    if ($image && (strlen($this->href) || strlen($this->imageHref))) {
+    if ($image && ($this->href && $this->imageHref)) {
       $image_href = ($this->imageHref) ? $this->imageHref : $this->href;
       $image = phutil_tag(
         'a',
@@ -873,7 +873,7 @@ final class PHUIObjectItemView extends AphrontTagView {
       'class' => 'phui-oi-status-icon',
     );
 
-    if (strlen($label)) {
+    if ($label && strlen($label)) {
       $options['sigil'] = 'has-tooltip';
       $options['meta']  = array('tip' => $label, 'size' => 300);
     }
@@ -890,7 +890,7 @@ final class PHUIObjectItemView extends AphrontTagView {
       'style' => 'background-image: url('.$handle->getImageURI().')',
     );
 
-    if (strlen($label)) {
+    if ($label) {
       $options['sigil'] = 'has-tooltip';
       $options['meta']  = array('tip' => $label, 'align' => 'E');
     }

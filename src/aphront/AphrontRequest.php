@@ -448,7 +448,7 @@ final class AphrontRequest extends Phobject {
   }
 
   private function getPrefixedCookieName($name) {
-    if (strlen($this->cookiePrefix)) {
+    if ($this->cookiePrefix && strlen($this->cookiePrefix)) {
       return $this->cookiePrefix.'_'.$name;
     } else {
       return $name;
@@ -956,7 +956,7 @@ final class AphrontRequest extends Phobject {
     $submit_cookie = PhabricatorCookies::COOKIE_SUBMIT;
 
     $submit_key = $this->getCookie($submit_cookie);
-    if (strlen($submit_key)) {
+    if ($submit_key && strlen($submit_key)) {
       $this->clearCookie($submit_cookie);
       $this->submitKey = $submit_key;
     }

@@ -68,7 +68,7 @@ final class AphrontFormTokenizerControl extends AphrontFormControl {
     $datasource->setViewer($this->getUser());
 
     $placeholder = null;
-    if (!strlen($this->placeholder)) {
+    if (!$this->placeholder) {
       $placeholder = $datasource->getPlaceholderText();
     }
 
