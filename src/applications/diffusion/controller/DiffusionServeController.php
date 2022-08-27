@@ -823,7 +823,7 @@ final class DiffusionServeController extends DiffusionController {
     $args = $this->getMercurialArguments();
     $args = $this->formatMercurialArguments($cmd, $args);
 
-    if (strlen($input)) {
+    if (strlen($input ?? '')) {
       $input = strlen($input)."\n".$input."0\n";
     }
 
@@ -958,7 +958,7 @@ final class DiffusionServeController extends DiffusionController {
 
     $has_pack = preg_match($stdout_regexp, $stdout);
 
-    if (strlen($stdout) >= 4) {
+    if (strlen($stdout ?? '') >= 4) {
       $has_flush_packet = (substr($stdout, -4) === "0000");
     } else {
       $has_flush_packet = false;

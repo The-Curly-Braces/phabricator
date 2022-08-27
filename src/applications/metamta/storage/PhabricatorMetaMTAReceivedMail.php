@@ -417,7 +417,7 @@ final class PhabricatorMetaMTAReceivedMail extends PhabricatorMetaMTADAO {
     $body = $this->getCleanTextBody();
     $attachments = $this->getAttachments();
 
-    if (strlen($body) || $attachments) {
+    if (strlen($body ?? '') || $attachments) {
       return;
     }
 

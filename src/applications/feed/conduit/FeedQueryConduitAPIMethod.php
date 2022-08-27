@@ -80,12 +80,12 @@ final class FeedQueryConduitAPIMethod extends FeedConduitAPIMethod {
       ->setPageSize($limit);
 
     $after = $request->getValue('after');
-    if (strlen($after)) {
+    if (strlen($after ?? '')) {
       $pager->setAfterID($after);
     }
 
     $before = $request->getValue('before');
-    if (strlen($before)) {
+    if (strlen($before ?? '')) {
       $pager->setBeforeID($before);
     }
 

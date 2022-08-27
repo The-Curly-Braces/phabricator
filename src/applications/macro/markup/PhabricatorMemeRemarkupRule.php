@@ -61,14 +61,14 @@ final class PhabricatorMemeRemarkupRule extends PhutilRemarkupRule {
       $parts = array();
 
       $above = $options['above'];
-      if (strlen($above)) {
+      if (strlen($above ?? '')) {
         $parts[] = pht('"%s"', $above);
       }
 
       $parts[] = $options['src'].' <'.$uri.'>';
 
       $below = $options['below'];
-      if (strlen($below)) {
+      if (strlen($below ?? '')) {
         $parts[] = pht('"%s"', $below);
       }
 

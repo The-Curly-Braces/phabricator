@@ -17,7 +17,7 @@ final class ConpherenceThreadTopicTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($new)) {
+    if (strlen($new ?? '')) {
       return pht(
         '%s set the room topic to %s.',
         $this->renderAuthor(),
@@ -34,7 +34,7 @@ final class ConpherenceThreadTopicTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($new)) {
+    if (strlen($new ?? '')) {
       return pht(
         '%s set the room topic to %s in %s.',
         $this->renderAuthor(),

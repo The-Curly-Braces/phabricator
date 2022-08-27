@@ -112,7 +112,7 @@ final class PassphraseCredentialEditController extends PassphraseController {
       if ($is_ssh && $has_secret) {
         $old_object = PhabricatorAuthSSHPrivateKey::newFromRawKey($env_secret);
 
-        if (strlen($v_password)) {
+        if (strlen($v_password ?? '')) {
           $old_object->setPassphrase($env_password);
         }
 

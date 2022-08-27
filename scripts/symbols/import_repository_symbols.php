@@ -117,7 +117,7 @@ function commit_symbols(
 }
 
 function check_string_value($value, $field_name, $line_no, $max_length) {
-   if (strlen($value) > $max_length) {
+   if (strlen($value ?? '') > $max_length) {
       throw new Exception(
         pht(
           "%s '%s' defined on line #%d is too long, ".

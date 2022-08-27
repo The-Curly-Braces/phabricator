@@ -73,7 +73,7 @@ final class PhabricatorOwnersPackageSearchEngine
       $query->withStatuses($map['statuses']);
     }
 
-    if (strlen($map['name'])) {
+    if (strlen($map['name'] ?? '')) {
       $query->withNameNgrams($map['name']);
     }
 

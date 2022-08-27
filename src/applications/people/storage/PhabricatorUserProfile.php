@@ -37,7 +37,7 @@ final class PhabricatorUserProfile extends PhabricatorUserDAO {
 
   public function getDisplayTitle() {
     $title = $this->getTitle();
-    if (strlen($title)) {
+    if (strlen($title ?? '')) {
       return $title;
     }
 

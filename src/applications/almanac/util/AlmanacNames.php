@@ -3,14 +3,14 @@
 final class AlmanacNames extends Phobject {
 
   public static function validateName($name) {
-    if (strlen($name) < 3) {
+    if (strlen($name ?? '') < 3) {
       throw new Exception(
         pht(
           'Almanac service, device, property, network and namespace names '.
           'must be at least 3 characters long.'));
     }
 
-    if (strlen($name) > 100) {
+    if (strlen($name ?? '') > 100) {
       throw new Exception(
         pht(
           'Almanac service, device, property, network and namespace names '.

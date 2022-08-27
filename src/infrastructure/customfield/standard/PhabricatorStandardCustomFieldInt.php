@@ -11,7 +11,7 @@ final class PhabricatorStandardCustomFieldInt
     $indexes = array();
 
     $value = $this->getFieldValue();
-    if (strlen($value)) {
+    if (strlen($value ?? '')) {
       $indexes[] = $this->newNumericIndex((int)$value);
     }
 
@@ -24,7 +24,7 @@ final class PhabricatorStandardCustomFieldInt
 
   public function getValueForStorage() {
     $value = $this->getFieldValue();
-    if (strlen($value)) {
+    if (strlen($value ?? '')) {
       return $value;
     } else {
       return null;
@@ -32,7 +32,7 @@ final class PhabricatorStandardCustomFieldInt
   }
 
   public function setValueFromStorage($value) {
-    if (strlen($value)) {
+    if (strlen($value ?? '')) {
       $value = (int)$value;
     } else {
       $value = null;
@@ -52,7 +52,7 @@ final class PhabricatorStandardCustomFieldInt
     PhabricatorCursorPagedPolicyAwareQuery $query,
     $value) {
 
-    if (strlen($value)) {
+    if (strlen($value ?? '')) {
       $query->withApplicationSearchContainsConstraint(
         $this->newNumericIndex(null),
         $value);
@@ -83,7 +83,7 @@ final class PhabricatorStandardCustomFieldInt
 
     foreach ($xactions as $xaction) {
       $value = $xaction->getNewValue();
-      if (strlen($value)) {
+      if (strlen($value ?? '')) {
         if (!preg_match('/^-?\d+/', $value)) {
           $errors[] = new PhabricatorApplicationTransactionValidationError(
             $type,
@@ -105,7 +105,7 @@ final class PhabricatorStandardCustomFieldInt
     $new = $xaction->getNewValue();
     if (!strlen($old) && strlen($new)) {
       return true;
-    } else if (strlen($old) && !strlen($new)) {
+    } else if (strlen($old ?? '') && !strlen($new ?? '')) {
       return true;
     } else {
       return ((int)$old !== (int)$new);

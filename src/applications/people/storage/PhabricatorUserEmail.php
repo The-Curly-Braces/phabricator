@@ -73,7 +73,7 @@ final class PhabricatorUserEmail
    * @task restrictions
    */
   public static function isValidAddress($address) {
-    if (strlen($address) > self::MAX_ADDRESS_LENGTH) {
+    if (strlen($address ?? '') > self::MAX_ADDRESS_LENGTH) {
       return false;
     }
 

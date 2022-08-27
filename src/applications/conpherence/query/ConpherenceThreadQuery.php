@@ -152,7 +152,7 @@ final class ConpherenceThreadQuery
         id(new ConpherenceParticipant())->getTableName());
     }
 
-    if (strlen($this->fulltext)) {
+    if (strlen($this->fulltext ?? '')) {
       $joins[] = qsprintf(
         $conn,
         'JOIN %T idx ON idx.threadPHID = thread.phid',
@@ -234,7 +234,7 @@ final class ConpherenceThreadQuery
         $this->participantPHIDs);
     }
 
-    if (strlen($this->fulltext)) {
+    if (strlen($this->fulltext ?? '')) {
       $where[] = qsprintf(
         $conn,
         'MATCH(idx.corpus) AGAINST (%s IN BOOLEAN MODE)',

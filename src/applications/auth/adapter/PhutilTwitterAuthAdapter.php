@@ -17,7 +17,7 @@ final class PhutilTwitterAuthAdapter extends PhutilOAuth1AuthAdapter {
 
   public function getAccountURI() {
     $name = $this->getAccountName();
-    if (strlen($name)) {
+    if (strlen($name ?? '')) {
       return 'https://twitter.com/'.$name;
     }
     return null;

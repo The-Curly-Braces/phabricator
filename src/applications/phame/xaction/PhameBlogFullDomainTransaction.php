@@ -10,7 +10,7 @@ final class PhameBlogFullDomainTransaction
   }
 
   public function applyInternalEffects($object, $value) {
-    if (strlen($value)) {
+    if (strlen($value ?? '')) {
       $uri = new PhutilURI($value);
       $domain = $uri->getDomain();
       $object->setDomain($domain);

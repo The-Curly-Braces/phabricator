@@ -17,13 +17,13 @@ final class PhortuneAccountBillingNameTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($old) && strlen($new)) {
+    if (strlen($old ?? '') && strlen($new ?? '')) {
       return pht(
         '%s changed the billing name for this account from %s to %s.',
         $this->renderAuthor(),
         $this->renderOldValue(),
         $this->renderNewValue());
-    } else if (strlen($old)) {
+    } else if (strlen($old ?? '')) {
       return pht(
         '%s removed the billing name for this account (was %s).',
         $this->renderAuthor(),

@@ -12,7 +12,7 @@ abstract class PhabricatorConfigJSONOptionType
     $storage_value = $request->getStr('value');
     $display_value = $request->getStr('value');
 
-    if (strlen($display_value)) {
+    if (strlen($display_value ?? '')) {
       try {
         $storage_value = phutil_json_decode($display_value);
         $this->validateOption($option, $storage_value);

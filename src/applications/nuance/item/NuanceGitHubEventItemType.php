@@ -413,7 +413,7 @@ final class NuanceGitHubEventItemType
 
     $event = $this->newRawEvent($item);
     $comment = $event->getComment();
-    if (strlen($comment)) {
+    if (strlen($comment ?? '')) {
       $xactions[] = id(new ManiphestTransaction())
         ->setTransactionType(PhabricatorTransactions::TYPE_COMMENT)
         ->attachComment(

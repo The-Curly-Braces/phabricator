@@ -31,7 +31,7 @@ final class PhabricatorAuthStartController
     $session_token = $request->getCookie(PhabricatorCookies::COOKIE_SESSION);
     $did_clear = $request->getStr('cleared');
 
-    if (strlen($session_token)) {
+    if (strlen($session_token ?? '')) {
       $kind = PhabricatorAuthSessionEngine::getSessionKindFromToken(
         $session_token);
       switch ($kind) {
@@ -112,7 +112,7 @@ final class PhabricatorAuthStartController
     }
 
     if (!$request->isFormPost()) {
-      if (strlen($next_uri)) {
+      if (strlen($next_uri ?? '')) {
         PhabricatorCookies::setNextURICookie($request, $next_uri);
       }
       PhabricatorCookies::setClientIDCookie($request);
@@ -226,7 +226,7 @@ final class PhabricatorAuthStartController
 
     $via_header = AphrontRequest::getViaHeaderName();
     $via_uri = AphrontRequest::getHTTPHeader($via_header);
-    if (strlen($via_uri)) {
+    if (strlen($via_uri ?? '')) {
       PhabricatorCookies::setNextURICookie($request, $via_uri, $force = true);
     }
 

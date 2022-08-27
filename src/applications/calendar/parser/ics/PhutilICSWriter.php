@@ -94,7 +94,7 @@ final class PhutilICSWriter extends Phobject {
     foreach (phutil_utf8v($line) as $character) {
       // If adding this character would bring the line over 75 bytes, start
       // a new line.
-      if (strlen($buf) + strlen($character) > 75) {
+      if (strlen($buf ?? '') + strlen($character ?? '') > 75) {
         $out[] = $buf."\r\n";
         $buf = ' ';
       }

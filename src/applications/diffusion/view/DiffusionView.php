@@ -71,7 +71,7 @@ abstract class DiffusionView extends AphrontView {
     $display_name = idx($details, 'name');
     unset($details['name']);
 
-    if (strlen($display_name)) {
+    if (strlen($display_name ?? '')) {
       $display_name = phutil_tag(
         'span',
         array(
@@ -144,7 +144,7 @@ abstract class DiffusionView extends AphrontView {
 
     $commit_name = $repository->formatCommitName($commit, $local = true);
 
-    if (strlen($summary)) {
+    if (strlen($summary ?? '')) {
       $commit_name .= ': '.$summary;
     }
 

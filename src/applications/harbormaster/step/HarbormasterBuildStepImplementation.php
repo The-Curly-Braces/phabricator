@@ -221,7 +221,7 @@ abstract class HarbormasterBuildStepImplementation extends Phobject {
   }
 
   protected function formatValueForDescription($value) {
-    if (strlen($value)) {
+    if (strlen($value ?? '')) {
       return phutil_tag('strong', array(), $value);
     } else {
       return phutil_tag('em', array(), pht('(null)'));

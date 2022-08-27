@@ -76,7 +76,7 @@ final class PhabricatorAuthPasswordEngine
     $min_len = PhabricatorEnv::getEnvConfig('account.minimum-password-length');
     $min_len = (int)$min_len;
     if ($min_len) {
-      if (strlen($raw_password) < $min_len) {
+      if (strlen($raw_password ?? '') < $min_len) {
         throw new PhabricatorAuthPasswordException(
           pht(
             'The selected password is too short. Passwords must be a minimum '.
@@ -164,7 +164,7 @@ final class PhabricatorAuthPasswordEngine
     // Skip very short terms: it's okay if your password has the substring
     // "com" in it somewhere even if the install is on "mycompany.com".
     foreach ($terms_map as $term => $source) {
-      if (strlen($term) < $minimum_similarity) {
+      if (strlen($term ?? '') < $minimum_similarity) {
         unset($terms_map[$term]);
       }
     }
@@ -179,7 +179,7 @@ final class PhabricatorAuthPasswordEngine
     // Finally, make sure that none of the terms appear in the password,
     // and that the password does not appear in any of the terms.
     $normal_password = phutil_utf8_strtolower($raw_password);
-    if (strlen($normal_password) >= $minimum_similarity) {
+    if (strlen($normal_password ?? '') >= $minimum_similarity) {
       foreach ($normal_map as $term => $source) {
 
         // See T2312. This may be required if the term list includes numeric

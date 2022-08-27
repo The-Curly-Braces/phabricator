@@ -916,7 +916,7 @@ abstract class PhabricatorApplicationSearchEngine extends Phobject {
 
     $start_str = $saved_query->getParameter($start_key);
     $start = null;
-    if (strlen($start_str)) {
+    if (strlen($start_str ?? '')) {
       $start = $this->parseDateTime($start_str);
       if (!$start) {
         $this->addError(
@@ -929,7 +929,7 @@ abstract class PhabricatorApplicationSearchEngine extends Phobject {
 
     $end_str = $saved_query->getParameter($end_key);
     $end = null;
-    if (strlen($end_str)) {
+    if (strlen($end_str ?? '')) {
       $end = $this->parseDateTime($end_str);
       if (!$end) {
         $this->addError(

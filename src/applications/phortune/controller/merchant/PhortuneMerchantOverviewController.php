@@ -110,7 +110,7 @@ final class PhortuneMerchantOverviewController
     $view->addProperty(pht('Status'), $status_view);
 
     $description = $merchant->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = new PHUIRemarkupView($viewer, $description);
       $view->addSectionHeader(
         pht('Description'),
@@ -119,7 +119,7 @@ final class PhortuneMerchantOverviewController
     }
 
     $contact_info = $merchant->getContactInfo();
-    if (strlen($contact_info)) {
+    if (strlen($contact_info ?? '')) {
       $contact_info = new PHUIRemarkupView($viewer, $contact_info);
       $view->addSectionHeader(
         pht('Contact Information'),

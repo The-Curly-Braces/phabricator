@@ -95,7 +95,7 @@ abstract class PhabricatorSetting extends Phobject {
       ->setMetadataValue($setting_property, $setting_key);
 
     $instructions = $this->getControlInstructions();
-    if (strlen($instructions)) {
+    if (strlen($instructions ?? '')) {
       $template->setControlInstructions($instructions);
     }
 

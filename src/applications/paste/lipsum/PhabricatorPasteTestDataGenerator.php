@@ -22,7 +22,7 @@ final class PhabricatorPasteTestDataGenerator
       PhabricatorPasteTitleTransaction::TRANSACTIONTYPE,
       $name);
 
-    if (strlen($language) > 0) {
+    if (strlen($language ?? '') > 0) {
         $xactions[] = $this->newTransaction(
             PhabricatorPasteLanguageTransaction::TRANSACTIONTYPE,
             $language);

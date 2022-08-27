@@ -39,7 +39,7 @@ final class PhabricatorConduitSearchEngine
     $query->withIsInternal(false);
 
     $contains = $saved->getParameter('nameContains');
-    if (strlen($contains)) {
+    if (strlen($contains ?? '')) {
       $query->withNameContains($contains);
     }
 

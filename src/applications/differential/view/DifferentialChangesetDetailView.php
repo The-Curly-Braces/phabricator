@@ -163,7 +163,7 @@ final class DifferentialChangesetDetailView extends AphrontView {
     $path_part = dirname($display_filename);
     $file_part = basename($display_filename);
     $display_parts = array();
-    if (strlen($path_part)) {
+    if (strlen($path_part ?? '')) {
       $path_part = $path_part.'/';
       $display_parts[] = phutil_tag(
         'span',

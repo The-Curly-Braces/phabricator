@@ -86,7 +86,7 @@ final class PholioMockImagesView extends AphrontView {
       }
 
       $description = $image->getDescription();
-      if (strlen($description)) {
+      if (strlen($description ?? '')) {
         $description = new PHUIRemarkupView($viewer, $description);
       }
 

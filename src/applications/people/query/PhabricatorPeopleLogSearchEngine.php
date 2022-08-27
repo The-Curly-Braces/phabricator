@@ -46,7 +46,7 @@ final class PhabricatorPeopleLogSearchEngine
       $query->withActions($map['actions']);
     }
 
-    if (strlen($map['ip'])) {
+    if (strlen($map['ip'] ?? '')) {
       $query->withRemoteAddressPrefix($map['ip']);
     }
 

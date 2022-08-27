@@ -143,7 +143,7 @@ final class PhabricatorSlowvoteSearchEngine
       }
 
       $description = $poll->getDescription();
-      if (strlen($description)) {
+      if (strlen($description ?? '')) {
         $item->addAttribute(id(new PhutilUTF8StringTruncator())
           ->setMaximumGlyphs(120)
           ->truncateString($poll->getDescription()));

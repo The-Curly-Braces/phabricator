@@ -30,7 +30,7 @@ final class PhutilRemarkupCodeBlockRule extends PhutilRemarkupBlockRule {
         }
         $num_lines++;
       } else {
-        if (strlen(trim($lines[$cursor]))) {
+        if (strlen(trim($lines[$cursor] ?? ''))) {
           if (!preg_match('/^\s{2,}/', $lines[$cursor])) {
             break;
           }

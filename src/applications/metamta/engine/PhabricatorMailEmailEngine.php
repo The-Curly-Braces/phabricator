@@ -100,7 +100,7 @@ final class PhabricatorMailEmailEngine
         }
       }
 
-      if (strlen($encrypt_uri)) {
+      if (strlen($encrypt_uri ?? '')) {
         $parts[] = pht(
           'This secure message is notifying you of a change to this object:');
         $parts[] = PhabricatorEnv::getProductionURI($encrypt_uri);
@@ -121,7 +121,7 @@ final class PhabricatorMailEmailEngine
     $body_limit = PhabricatorEnv::getEnvConfig('metamta.email-body-limit');
 
     $body = phutil_string_cast($body);
-    if (strlen($body) > $body_limit) {
+    if (strlen($body ?? '') > $body_limit) {
       $body = id(new PhutilUTF8StringTruncator())
         ->setMaximumBytes($body_limit)
         ->truncateString($body);
@@ -149,7 +149,7 @@ final class PhabricatorMailEmailEngine
         // NOTE: We just drop the entire HTML body if it won't fit. Safely
         // truncating HTML is hard, and we already have the text body to fall
         // back to.
-        if (strlen($html_body) <= $body_limit) {
+        if (strlen($html_body ?? '') <= $body_limit) {
           $message->setHTMLBody($html_body);
           $body_limit -= strlen($html_body);
         }
@@ -497,7 +497,7 @@ final class PhabricatorMailEmailEngine
     $object = id(new PhutilEmailAddress())
       ->setAddress($address);
 
-    if (strlen($name)) {
+    if (strlen($name ?? '')) {
       $object->setDisplayName($name);
     }
 
@@ -527,7 +527,7 @@ final class PhabricatorMailEmailEngine
 
   private function newMailDomain() {
     $domain = PhabricatorEnv::getEnvConfig('metamta.reply-handler-domain');
-    if (strlen($domain)) {
+    if (strlen($domain ?? '')) {
       return $domain;
     }
 

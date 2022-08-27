@@ -75,7 +75,7 @@ final class PhutilRemarkupLiteralBlockRule extends PhutilRemarkupBlockRule {
       }
 
       if ($block_start === null) {
-        if (strlen(trim($line))) {
+        if (strlen(trim($line ?? ''))) {
           break;
         }
         $found_empty = true;

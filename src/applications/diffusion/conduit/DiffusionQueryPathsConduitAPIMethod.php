@@ -69,7 +69,7 @@ final class DiffusionQueryPathsConduitAPIMethod
 
     $lines = array();
     foreach ($entire_manifest as $path) {
-      if (strlen($path) && !strncmp($path, $match_against, $match_len)) {
+      if (strlen($path ?? '') && !strncmp($path, $match_against, $match_len)) {
         $lines[] = $path;
       }
     }
@@ -82,7 +82,7 @@ final class DiffusionQueryPathsConduitAPIMethod
     $limit = (int)$request->getValue('limit');
     $offset = (int)$request->getValue('offset');
 
-    if (strlen($pattern)) {
+    if (strlen($pattern ?? '')) {
       // Add delimiters to the regex pattern.
       $pattern = '('.$pattern.')';
     }
@@ -90,7 +90,7 @@ final class DiffusionQueryPathsConduitAPIMethod
     $results = array();
     $count = 0;
     foreach ($lines as $line) {
-      if (strlen($pattern) && !preg_match($pattern, $line)) {
+      if (strlen($pattern ?? '') && !preg_match($pattern, $line)) {
         continue;
       }
 

@@ -17,7 +17,7 @@ final class PhortuneAccountNameTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($old) && strlen($new)) {
+    if (strlen($old ?? '') && strlen($new ?? '')) {
       return pht(
         '%s renamed this account from %s to %s.',
         $this->renderAuthor(),

@@ -467,7 +467,7 @@ final class DifferentialChangesetParser extends Phobject {
     $cache = serialize($cache);
 
     // We don't want to waste too much space by a single changeset.
-    if (strlen($cache) > self::CACHE_MAX_SIZE) {
+    if (strlen($cache ?? '') > self::CACHE_MAX_SIZE) {
       return;
     }
 
@@ -568,7 +568,7 @@ final class DifferentialChangesetParser extends Phobject {
         $this->filename);
 
       if (($language != 'txt') &&
-          (strlen($corpus) > self::HIGHLIGHT_BYTE_LIMIT)) {
+          (strlen($corpus ?? '') > self::HIGHLIGHT_BYTE_LIMIT)) {
         $this->highlightingDisabled = true;
         $language = 'txt';
       }

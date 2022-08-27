@@ -90,7 +90,7 @@ final class PhameBlogViewController extends PhameLiveController {
       ->appendChild($post_list);
 
     $description = null;
-    if (strlen($blog->getDescription())) {
+    if (strlen($blog->getDescription() ?? '')) {
       $description = new PHUIRemarkupView(
         $viewer,
         $blog->getDescription());

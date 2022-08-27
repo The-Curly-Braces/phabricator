@@ -174,7 +174,7 @@ final class PhabricatorStorageManagementRenamespaceWorkflow
           throw new Exception(
             pht(
               'Failed to write %d byte(s) to "%s".',
-              new PhutilNumber(strlen($data)),
+              new PhutilNumber(strlen($data ?? '')),
               $output_name));
         }
       }

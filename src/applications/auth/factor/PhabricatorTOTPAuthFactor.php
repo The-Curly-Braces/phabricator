@@ -342,7 +342,7 @@ final class PhabricatorTOTPAuthFactor extends PhabricatorAuthFactor {
 
       $result->setAnsweredChallenge($challenge);
     } else {
-      if (strlen($code)) {
+      if (strlen($code ?? '')) {
         $error_message = pht('Invalid');
       } else {
         $error_message = pht('Required');

@@ -47,7 +47,7 @@ final class PhabricatorMetaMTAMailgunReceiveController
 
     $raw_headers = $request->getStr('message-headers');
     $raw_dict = array();
-    if (strlen($raw_headers)) {
+    if (strlen($raw_headers ?? '')) {
       $raw_headers = phutil_json_decode($raw_headers);
       foreach ($raw_headers as $raw_header) {
         list($name, $value) = $raw_header;

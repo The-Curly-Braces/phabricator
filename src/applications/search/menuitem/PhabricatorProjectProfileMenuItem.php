@@ -62,7 +62,7 @@ final class PhabricatorProjectProfileMenuItem
     if (!$project) {
       return pht('(Restricted/Invalid Project)');
     }
-    if (strlen($this->getName($config))) {
+    if (strlen($this->getName($config) ?? '')) {
       return $this->getName($config);
     } else {
       return $project->getName();

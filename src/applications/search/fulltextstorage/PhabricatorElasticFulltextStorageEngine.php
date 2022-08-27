@@ -108,7 +108,7 @@ class PhabricatorElasticFulltextStorageEngine
   private function buildSpec(PhabricatorSavedQuery $query) {
     $q = new PhabricatorElasticsearchQueryBuilder('bool');
     $query_string = $query->getParameter('query');
-    if (strlen($query_string)) {
+    if (strlen($query_string ?? '')) {
       $fields = $this->getTypeConstants('PhabricatorSearchDocumentFieldType');
 
       // Build a simple_query_string query over all fields that must match all

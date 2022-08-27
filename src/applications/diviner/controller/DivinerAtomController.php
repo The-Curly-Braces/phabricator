@@ -165,7 +165,7 @@ final class DivinerAtomController extends DivinerController {
 
               $item = $this->renderFullSignature($atom, true);
 
-              if (strlen($atom->getSummary())) {
+              if (strlen($atom->getSummary() ?? '')) {
                 $item = array(
                   $item,
                   " \xE2\x80\x94 ",
@@ -437,7 +437,7 @@ final class DivinerAtomController extends DivinerController {
     $tasks = $symbol->getAtom()->getDocblockMetaValue('task');
 
     if (!is_array($tasks)) {
-      if (strlen($tasks)) {
+      if (strlen($tasks ?? '')) {
         $tasks = array($tasks);
       } else {
         $tasks = array();
@@ -622,7 +622,7 @@ final class DivinerAtomController extends DivinerController {
     $field = 'default';
     $content = $engine->getOutput($symbol, $field);
 
-    if (strlen(trim($symbol->getMarkupText($field)))) {
+    if (strlen(trim($symbol->getMarkupText($field) ?? ''))) {
       $content = phutil_tag(
         'div',
         array(

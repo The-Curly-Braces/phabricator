@@ -102,7 +102,7 @@ final class PhabricatorAuthSSHPublicKey extends Phobject {
 
   public function getEntireKey() {
     $key = $this->type.' '.$this->body;
-    if (strlen($this->comment)) {
+    if (strlen($this->comment ?? '')) {
       $key = $key.' '.$this->comment;
     }
     return $key;

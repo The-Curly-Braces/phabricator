@@ -54,7 +54,7 @@ final class PHUIHandleTagListView extends AphrontTagView {
 
     // If the list is empty, we may render a "No Projects" tag.
     if (!count($handles)) {
-      if (strlen($this->noDataString)) {
+      if (strlen($this->noDataString ?? '')) {
         $no_data_tag = $this->newPlaceholderTag()
           ->setName($this->noDataString);
         return $this->newItem($no_data_tag);

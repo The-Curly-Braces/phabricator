@@ -726,7 +726,7 @@ final class DiffusionCommitQuery
         }
 
         if ($repo === null) {
-          if (strlen($commit_identifier) < $min_unqualified) {
+          if (strlen($commit_identifier ?? '') < $min_unqualified) {
             continue;
           }
           $bare[] = $commit_identifier;
@@ -776,12 +776,12 @@ final class DiffusionCommitQuery
               // See T3377.
               (int)$ref['identifier']);
           } else {
-            if (strlen($ref['identifier']) < $min_qualified) {
+            if (strlen($ref['identifier'] ?? '') < $min_qualified) {
               continue;
             }
 
             $identifier = $ref['identifier'];
-            if (strlen($identifier) == 40) {
+            if (strlen($identifier ?? '') == 40) {
               // MySQL seems to do slightly better with this version if the
               // clause, so issue it if we have a full commit hash.
               $sql[] = qsprintf(

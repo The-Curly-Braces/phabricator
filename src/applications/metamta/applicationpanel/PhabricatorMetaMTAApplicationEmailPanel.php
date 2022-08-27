@@ -50,7 +50,7 @@ final class PhabricatorMetaMTAApplicationEmailPanel
     $application = $this->getApplication();
 
     $path = $request->getURIData('path');
-    if (strlen($path)) {
+    if (strlen($path ?? '')) {
       return new Aphront404Response();
     }
 

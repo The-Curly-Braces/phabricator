@@ -117,7 +117,7 @@ final class PhabricatorEditEngineSubtype
   }
 
   public static function validateSubtypeKey($subtype) {
-    if (strlen($subtype) > 64) {
+    if (strlen($subtype ?? '') > 64) {
       throw new Exception(
         pht(
           'Subtype "%s" is not valid: subtype keys must be no longer than '.
@@ -125,7 +125,7 @@ final class PhabricatorEditEngineSubtype
           $subtype));
     }
 
-    if (strlen($subtype) < 3) {
+    if (strlen($subtype ?? '') < 3) {
       throw new Exception(
         pht(
           'Subtype "%s" is not valid: subtype keys must have a minimum '.

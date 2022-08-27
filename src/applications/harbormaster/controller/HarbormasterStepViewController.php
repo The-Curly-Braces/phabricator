@@ -99,7 +99,7 @@ final class HarbormasterStepViewController
       $view);
 
     $description = $step->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $view->addSectionHeader(
         pht('Description'),
         PHUIPropertyListView::ICON_SUMMARY);

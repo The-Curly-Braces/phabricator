@@ -68,7 +68,7 @@ abstract class ConpherenceController extends PhabricatorController {
         ->setPolicyObject($conpherence)
         ->setImage($data['image']);
 
-      if (strlen($data['topic'])) {
+      if (strlen($data['topic'] ?? '')) {
         $topic = id(new PHUITagView())
           ->setName($data['topic'])
           ->setColor(PHUITagView::COLOR_VIOLET)

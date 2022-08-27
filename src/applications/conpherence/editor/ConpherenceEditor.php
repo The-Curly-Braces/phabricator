@@ -46,7 +46,7 @@ final class ConpherenceEditor extends PhabricatorApplicationTransactionEditor {
             ConpherenceThreadTitleTransaction::TRANSACTIONTYPE)
           ->setNewValue($title);
       }
-      if (strlen($topic)) {
+      if (strlen($topic ?? '')) {
         $xactions[] = id(new ConpherenceTransaction())
           ->setTransactionType(
             ConpherenceThreadTopicTransaction::TRANSACTIONTYPE)

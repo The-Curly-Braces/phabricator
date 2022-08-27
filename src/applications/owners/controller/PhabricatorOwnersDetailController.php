@@ -223,7 +223,7 @@ final class PhabricatorOwnersDetailController
     $view->addProperty(pht('Ignored Attributes'), $ignored);
 
     $description = $package->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = new PHUIRemarkupView($viewer, $description);
       $view->addSectionHeader(pht('Description'));
       $view->addTextContent($description);

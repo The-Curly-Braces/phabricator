@@ -154,7 +154,7 @@ final class PhabricatorLDAPAuthProvider extends PhabricatorAuthProvider {
 
     if ($request->isFormPost()) {
       try {
-        if (strlen($username) && $has_password) {
+        if (strlen($username ?? '') && $has_password) {
           $adapter = $this->getAdapter();
           $adapter->setLoginUsername($username);
           $adapter->setLoginPassword($password);
@@ -427,7 +427,7 @@ final class PhabricatorLDAPAuthProvider extends PhabricatorAuthProvider {
       }
 
       $instruction_text = idx($instructions, $key);
-      if (strlen($instruction_text)) {
+      if (strlen($instruction_text ?? '')) {
         $form->appendRemarkupInstructions($instruction_text);
       }
 

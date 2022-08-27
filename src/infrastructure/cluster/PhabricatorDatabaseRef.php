@@ -229,7 +229,7 @@ final class PhabricatorDatabaseRef
     $host = $this->getHost();
 
     $port = $this->getPort();
-    if (strlen($port)) {
+    if (strlen($port ?? '')) {
       return "{$host}:{$port}";
     }
 

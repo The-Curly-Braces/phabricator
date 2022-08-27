@@ -249,7 +249,7 @@ final class DrydockWorkingCopyBlueprintImplementation
 
       $root_key = 'workingcopy.root';
       $root = $resource->getAttribute($root_key);
-      if (strlen($root)) {
+      if (strlen($root ?? '')) {
         $interface->execx('rm -rf -- %s', $root);
       }
     }

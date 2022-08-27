@@ -145,7 +145,7 @@ final class PholioMockEditController extends PholioController {
             ->setReplacesImagePHID($replaces_image_phid)
             ->setFilePHID($file_phid)
             ->attachFile($file)
-            ->setName(strlen($title) ? $title : $file->getName())
+            ->setName(strlen($title ?? '') ? $title : $file->getName())
             ->setDescription($description)
             ->setSequence($sequence)
             ->save();
@@ -160,7 +160,7 @@ final class PholioMockEditController extends PholioController {
             ->setAuthorPHID($viewer->getPHID())
             ->setFilePHID($file_phid)
             ->attachFile($file)
-            ->setName(strlen($title) ? $title : $file->getName())
+            ->setName(strlen($title ?? '') ? $title : $file->getName())
             ->setDescription($description)
             ->setSequence($sequence)
             ->save();

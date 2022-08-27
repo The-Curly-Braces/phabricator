@@ -37,7 +37,7 @@ final class PhabricatorSourceDocumentEngine
         $content);
     } else {
       $highlight_limit = DifferentialChangesetParser::HIGHLIGHT_BYTE_LIMIT;
-      if (strlen($content) > $highlight_limit) {
+      if (strlen($content ?? '') > $highlight_limit) {
         $messages[] = $this->newMessage(
           pht(
             'This file is larger than %s, so syntax highlighting was skipped.',

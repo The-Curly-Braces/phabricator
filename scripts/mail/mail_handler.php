@@ -39,7 +39,7 @@ $content = array();
 foreach (array('text', 'html') as $part) {
   $part_body = $parser->getMessageBody($part);
 
-  if (strlen($part_body) && !phutil_is_utf8($part_body)) {
+  if (strlen($part_body ?? '') && !phutil_is_utf8($part_body)) {
     $part_headers = $parser->getMessageBodyHeaders($part);
     if (!is_array($part_headers)) {
       $part_headers = array();

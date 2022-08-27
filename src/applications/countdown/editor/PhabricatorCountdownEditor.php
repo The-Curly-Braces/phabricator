@@ -55,7 +55,7 @@ final class PhabricatorCountdownEditor
     $body = parent::buildMailBody($object, $xactions);
     $description = $object->getDescription();
 
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $body->addRemarkupSection(
         pht('COUNTDOWN DESCRIPTION'),
         $object->getDescription());

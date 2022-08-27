@@ -25,7 +25,7 @@ final class PhabricatorStorageManagementShellWorkflow
     $flag_password = '';
     $password = $api->getPassword();
     if ($password) {
-      if (strlen($password->openEnvelope())) {
+      if ($password !== null &&  strlen($password->openEnvelope())) {
         $flag_password = csprintf('--password=%P', $password);
       }
     }

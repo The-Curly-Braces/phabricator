@@ -76,7 +76,7 @@ final class PhabricatorOwnersHovercardEngineExtension
       $viewer->renderHandleList($owner_phids)->setAsInline(true));
 
     $description = $package->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = id(new PhutilUTF8StringTruncator())
         ->setMaximumGlyphs(120)
         ->truncateString($description);

@@ -17,7 +17,7 @@ final class ConpherenceThreadTitleTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($old) && strlen($new)) {
+    if (strlen($old ?? '') && strlen($new ?? '')) {
       return pht(
         '%s renamed this room from %s to %s.',
         $this->renderAuthor(),
@@ -34,7 +34,7 @@ final class ConpherenceThreadTitleTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($old) && strlen($new)) {
+    if (strlen($old ?? '') && strlen($new ?? '')) {
       return pht(
         '%s renamed %s from %s to %s.',
         $this->renderAuthor(),

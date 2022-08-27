@@ -60,7 +60,7 @@ final class PhabricatorFilesManagementEncodeWorkflow
     }
 
     $key_name = $args->getArg('key');
-    if (strlen($key_name)) {
+    if (strlen($key_name ?? '')) {
       $format->selectMasterKey($key_name);
     }
 

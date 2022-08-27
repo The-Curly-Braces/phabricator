@@ -231,7 +231,7 @@ final class PhutilICSParser extends Phobject {
         while (true) {
           // The value can either be a double-quoted string or an unquoted
           // string, with some characters forbidden.
-          if (strlen($body) && $body[0] == '"') {
+          if (strlen($body ?? '') && $body[0] == '"') {
             $is_quoted = true;
             $ok = preg_match(
               '(^"([^\x00-\x08\x10-\x19"]*)")',

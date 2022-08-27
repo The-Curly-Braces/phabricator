@@ -17,13 +17,13 @@ final class PhabricatorPasteTitleTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($old) && strlen($new)) {
+    if (strlen($old ?? '') && strlen($new ?? '')) {
       return pht(
         '%s changed the title of this paste from %s to %s.',
         $this->renderAuthor(),
         $this->renderOldValue(),
         $this->renderNewValue());
-    } else if (strlen($new)) {
+    } else if (strlen($new ?? '')) {
       return pht(
         '%s changed the title of this paste from untitled to %s.',
         $this->renderAuthor(),
@@ -47,7 +47,7 @@ final class PhabricatorPasteTitleTransaction
         $this->renderObject(),
         $this->renderOldValue(),
         $this->renderNewValue());
-    } else if (strlen($new)) {
+    } else if (strlen($new ?? '')) {
       return pht(
         '%s updated the title for %s from untitled to %s.',
         $this->renderAuthor(),

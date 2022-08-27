@@ -60,7 +60,7 @@ final class SlowvoteEmbedView extends AphrontView {
       ->setHeader($link_to_slowvote);
 
     $description = $poll->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = new PHUIRemarkupView($this->getUser(), $description);
       $description = phutil_tag(
         'div',

@@ -43,7 +43,7 @@ final class PhabricatorXHProfSample
 
   public function getDisplayName() {
     $request_path = $this->getRequestPath();
-    if (strlen($request_path)) {
+    if (strlen($request_path ?? '')) {
       return $request_path;
     }
 

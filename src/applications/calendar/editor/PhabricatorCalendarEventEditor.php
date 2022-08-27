@@ -324,7 +324,7 @@ final class PhabricatorCalendarEventEditor
 
     $description = $object->getDescription();
     if ($this->getIsNewObject()) {
-      if (strlen($description)) {
+      if (strlen($description ?? '')) {
         $body->addRemarkupSection(
           pht('EVENT DESCRIPTION'),
           $description);

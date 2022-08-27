@@ -85,7 +85,7 @@ final class DivinerBookController extends DivinerController {
 
     $preface = $book->getPreface();
     $preface_view = null;
-    if (strlen($preface)) {
+    if (strlen($preface ?? '')) {
       $preface_view = new PHUIRemarkupView($viewer, $preface);
     }
 

@@ -456,7 +456,7 @@ abstract class PhabricatorCalendarImportEngine
 
   private function getNodeInstanceEpoch(PhutilCalendarEventNode $node) {
     $instance_iso = $node->getRecurrenceID();
-    if (strlen($instance_iso)) {
+    if (strlen($instance_iso ?? '')) {
       $instance_datetime = PhutilCalendarAbsoluteDateTime::newFromISO8601(
         $instance_iso);
       $instance_epoch = $instance_datetime->getEpoch();
@@ -482,7 +482,7 @@ abstract class PhabricatorCalendarImportEngine
 
     $name = $node->getName();
     if (!strlen($name)) {
-      if (strlen($uid)) {
+      if (strlen($uid ?? '')) {
         $name = pht('Unnamed Event "%s"', $uid);
       } else {
         $name = pht('Unnamed Imported Event');
@@ -571,7 +571,7 @@ abstract class PhabricatorCalendarImportEngine
   }
 
   final protected function shouldQueueDataImport($data) {
-    return (strlen($data) > self::QUEUE_BYTE_LIMIT);
+    return (strlen($data ?? '') > self::QUEUE_BYTE_LIMIT);
   }
 
   final protected function queueDataImport(

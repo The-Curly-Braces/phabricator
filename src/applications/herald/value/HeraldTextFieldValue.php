@@ -28,7 +28,7 @@ final class HeraldTextFieldValue
       return phutil_tag('em', array(), pht('None'));
     }
 
-    if (strlen($value) > 256) {
+    if (strlen($value ?? '') > 256) {
       $value = phutil_tag(
         'textarea',
         array(

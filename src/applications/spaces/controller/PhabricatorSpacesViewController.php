@@ -81,7 +81,7 @@ final class PhabricatorSpacesViewController
         : pht('No'));
 
     $description = $space->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = new PHUIRemarkupView($viewer, $description);
       $list->addSectionHeader(
         pht('Description'),

@@ -99,7 +99,7 @@ final class AphrontMySQLiDatabaseConnection
     // "port" parameter.)
 
     if (!$ok) {
-      if (strlen($call_error)) {
+      if ($call_error !== null && strlen($call_error)) {
         $message = pht(
           'mysqli->real_connect() failed: %s',
           $call_error);
@@ -180,7 +180,7 @@ final class AphrontMySQLiDatabaseConnection
     if (!$result) {
       $error_code = $this->getErrorCode($conn);
       if (!$error_code) {
-        if (strlen($err)) {
+        if ($err !== null && strlen($err)) {
           $message = $err;
          } else {
           $message = pht(

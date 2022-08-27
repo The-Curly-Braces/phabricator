@@ -27,7 +27,7 @@ final class DiffusionGitRawDiffQuery extends DiffusionRawDiffQuery {
         '--format=%P',
         gitsprintf('%s', $commit));
 
-      if (strlen(trim($parents))) {
+      if (strlen(trim($parents ?? ''))) {
         $against = $commit.'^';
       } else {
         $against = ArcanistGitAPI::GIT_MAGIC_ROOT_COMMIT;

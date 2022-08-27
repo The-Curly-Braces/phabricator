@@ -69,7 +69,7 @@ final class HeraldObjectTranscript extends Phobject {
 
   private static function truncateValue($value, $length) {
     if (is_string($value)) {
-      if (strlen($value) <= $length) {
+      if (strlen($value ?? '') <= $length) {
         return $value;
       } else {
         // NOTE: PhutilUTF8StringTruncator has huge runtime for giant strings.

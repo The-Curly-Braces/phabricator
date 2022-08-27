@@ -62,7 +62,7 @@ final class PhabricatorMailTarget extends Phobject {
 
     $body = $mail->getBody();
     $html_body = $mail->getHTMLBody();
-    $has_html = (strlen($html_body) > 0);
+    $has_html = (strlen($html_body ?? '') > 0);
 
     if ($show_stamps) {
       $stamps = $mail->getMailStamps();

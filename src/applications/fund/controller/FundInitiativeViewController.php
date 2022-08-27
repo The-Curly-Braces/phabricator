@@ -94,7 +94,7 @@ final class FundInitiativeViewController
       $initiative->getTotalAsCurrency()->formatForDisplay());
 
     $description = $initiative->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = new PHUIRemarkupView($viewer, $description);
       $view->addSectionHeader(
         pht('Description'), PHUIPropertyListView::ICON_SUMMARY);
@@ -102,7 +102,7 @@ final class FundInitiativeViewController
     }
 
     $risks = $initiative->getRisks();
-    if (strlen($risks)) {
+    if (strlen($risks ?? '')) {
       $risks = new PHUIRemarkupView($viewer, $risks);
       $view->addSectionHeader(
         pht('Risks/Challenges'), 'fa-ambulance');

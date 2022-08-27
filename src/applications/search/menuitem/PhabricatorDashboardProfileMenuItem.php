@@ -117,7 +117,7 @@ final class PhabricatorDashboardProfileMenuItem
       return pht('Archived Dashboard');
     }
 
-    if (strlen($this->getName($config))) {
+    if (strlen($this->getName($config ?? ''))) {
       return $this->getName($config);
     } else {
       return $dashboard->getName();

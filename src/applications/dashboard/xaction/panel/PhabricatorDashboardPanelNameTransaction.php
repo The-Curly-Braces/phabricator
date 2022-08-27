@@ -37,7 +37,7 @@ final class PhabricatorDashboardPanelNameTransaction
         continue;
       }
 
-      if (strlen($new) > $max_length) {
+      if (strlen($new ?? '') > $max_length) {
         $errors[] = $this->newInvalidError(
           pht(
             'Panel names must not be longer than %s characters.',

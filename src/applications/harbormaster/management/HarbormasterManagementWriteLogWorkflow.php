@@ -83,7 +83,7 @@ final class HarbormasterManagementWriteLogWorkflow
 
       foreach ($pieces as $piece) {
         $log->append($piece);
-        $bar->update(strlen($piece));
+        $bar->update(strlen($piece ?? ''));
         sleep(1);
       }
 

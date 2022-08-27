@@ -98,7 +98,7 @@ function xsprintf_query($userdata, &$pattern, &$pos, &$value, &$length) {
     $unmasked = false;
   }
 
-  $next = (strlen($pattern) > $pos + 1) ? $pattern[$pos + 1] : null;
+  $next = (strlen($pattern ?? '') > $pos + 1) ? $pattern[$pos + 1] : null;
   $nullable = false;
   $done = false;
 
@@ -193,7 +193,7 @@ function xsprintf_query($userdata, &$pattern, &$pos, &$value, &$length) {
           foreach ($value as $k => $v) {
             $matches = null;
             if (preg_match('/\((\d+)\)\z/', $v, $matches)) {
-              $v = substr($v, 0, -(strlen($matches[1]) + 2));
+              $v = substr($v, 0, -(strlen($matches[1] ?? '') + 2));
               $prefix_len = '('.((int)$matches[1]).')';
             } else {
               $prefix_len = '';

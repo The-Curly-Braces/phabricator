@@ -21,7 +21,7 @@ final class DiffusionLintController extends DiffusionController {
     }
 
     $code = $request->getStr('lint');
-    if (strlen($code)) {
+    if (strlen($code ?? '')) {
       return $this->buildDetailsResponse();
     }
 

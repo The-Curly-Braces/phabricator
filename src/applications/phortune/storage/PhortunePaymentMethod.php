@@ -109,7 +109,7 @@ final class PhortunePaymentMethod
   }
 
   public function getDisplayName() {
-    if (strlen($this->name)) {
+    if (strlen($this->name ?? '')) {
       return $this->name;
     }
 

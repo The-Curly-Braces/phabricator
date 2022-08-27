@@ -164,7 +164,7 @@ final class PhabricatorBulkManagementExportWorkflow
       ->execute();
 
     $class = $args->getArg('class');
-    if (strlen($class)) {
+    if (strlen($class ?? '')) {
 
       $class_list = array();
       foreach ($engine_classes as $class_name => $engine_object) {

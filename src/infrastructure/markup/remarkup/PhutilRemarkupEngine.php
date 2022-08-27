@@ -332,7 +332,11 @@ final class PhutilRemarkupEngine extends PhutilMarkupEngine {
 
     $tail = $text[$current_block['start'] - 1];
     $head = $text[$current_block['start']];
-    if (strlen(trim($tail)) && strlen(trim($head))) {
+    if ($tail === null || $head === null) {
+      return false;
+    }
+
+    if (strlen(trim($tail ?? '')) && strlen(trim($head ?? ''))) {
       return true;
     }
 
@@ -341,7 +345,7 @@ final class PhutilRemarkupEngine extends PhutilMarkupEngine {
 
   private static function isEmptyBlock($text, $start, $num_lines) {
     for ($cursor = $start; $cursor < $start + $num_lines; $cursor++) {
-      if (strlen(trim($text[$cursor]))) {
+      if (strlen(trim($text[$cursor] ?? ''))) {
         return false;
       }
     }

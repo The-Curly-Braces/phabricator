@@ -26,7 +26,7 @@ final class PhabricatorApplicationProfileMenuItem
       return pht('(Restricted/Invalid Application)');
     }
 
-    $name = $this->getName($config);
+    $name = $this->getName($config ?? '');
     if (strlen($name)) {
       return $name;
     }

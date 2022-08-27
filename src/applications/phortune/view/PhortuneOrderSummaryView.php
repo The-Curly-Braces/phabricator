@@ -261,14 +261,14 @@ final class PhortuneOrderSummaryView
     $account_name = $account->getBillingName();
 
     $account_contact = $account->getBillingAddress();
-    if (strlen($account_contact)) {
+    if (strlen($account_contact ?? '')) {
       $account_contact = new PHUIRemarkupView(
         $viewer,
         $account_contact);
     }
 
     $merchant_contact = $merchant->getContactInfo();
-    if (strlen($merchant_contact)) {
+    if (strlen($merchant_contact ?? '')) {
       $merchant_contact = new PHUIRemarkupView(
         $viewer,
         $merchant->getContactInfo());

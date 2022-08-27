@@ -53,7 +53,7 @@ final class PhabricatorConduitCallManagementWorkflow
     }
 
     $as = $args->getArg('as');
-    if (strlen($as)) {
+    if (strlen($as ?? '')) {
       $actor = id(new PhabricatorPeopleQuery())
         ->setViewer($viewer)
         ->withUsernames(array($as))

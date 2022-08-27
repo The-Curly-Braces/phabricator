@@ -77,7 +77,7 @@ final class PhabricatorAuthMessage
     $message = self::loadMessage($viewer, $message_key);
     if ($message) {
       $message_text = $message->getMessageText();
-      if (strlen($message_text)) {
+      if (strlen($message_text ?? '')) {
         return $message_text;
       }
     }

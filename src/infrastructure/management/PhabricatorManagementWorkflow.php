@@ -86,7 +86,7 @@ abstract class PhabricatorManagementWorkflow extends PhutilArgumentWorkflow {
       }
 
       // If the value is "@..." and then some text, treat it as a username.
-      if ((strlen($identifier) > 1) && ($identifier[0] == '@')) {
+      if ((strlen($identifier ?? '') > 1) && ($identifier[0] == '@')) {
         $usernames[$identifier] = substr($identifier, 1);
         continue;
       }

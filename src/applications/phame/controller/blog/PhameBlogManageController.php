@@ -144,7 +144,7 @@ final class PhameBlogManageController extends PhameBlogController {
         $feed_uri));
 
     $description = $blog->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = new PHUIRemarkupView($viewer, $description);
       $properties->addSectionHeader(
         pht('Description'),

@@ -47,7 +47,7 @@ final class DiffusionMercurialWireClientSSHProtocolChannel
   }
 
   private function readProtocolBytes() {
-    if (strlen($this->buffer) < $this->expectBytes) {
+    if (strlen($this->buffer ?? '') < $this->expectBytes) {
       return null;
     }
 

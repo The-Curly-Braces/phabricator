@@ -16,7 +16,7 @@ final class PhutilSearchStemmer
     foreach ($tokens as $key => $token) {
       $token = trim($token, '._');
 
-      if (strlen($token) < 3) {
+      if (strlen($token ?? '') < 3) {
         continue;
       }
 
@@ -64,7 +64,7 @@ final class PhutilSearchStemmer
     // If the stem is too short, it won't be a candidate for indexing. These
     // tokens are also likely to be acronyms (like "DNS") rather than real
     // English words.
-    if (strlen($stem) < 3) {
+    if (strlen($stem ?? '') < 3) {
       return $normalized_token;
     }
 

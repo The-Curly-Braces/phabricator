@@ -70,7 +70,7 @@ final class PhutilXHPASTSyntaxHighlighterFuture extends FutureProxy {
       unset($tokens[0]);
 
       $value = $tokens[1]->getValue();
-      if ((strlen($value) < 1) || ($value[0] != "\n")) {
+      if ((strlen($value ?? '') < 1) || ($value[0] != "\n")) {
         throw new Exception(
           pht(
             'Expected "\\n" at beginning of T_WHITESPACE token at head of '.

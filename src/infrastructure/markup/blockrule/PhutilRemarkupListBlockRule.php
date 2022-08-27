@@ -239,7 +239,7 @@ final class PhutilRemarkupListBlockRule extends PhutilRemarkupBlockRule {
       $mark = null;
       $matches = null;
       if (preg_match('/^\s*\[(\D?)\]\s*/', $text, $matches)) {
-        if (strlen(trim($matches[1]))) {
+        if (strlen(trim($matches[1] ?? ''))) {
           $mark = true;
         } else {
           $mark = false;

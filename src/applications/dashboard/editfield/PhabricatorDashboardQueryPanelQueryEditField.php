@@ -38,7 +38,7 @@ final class PhabricatorDashboardQueryPanelQueryEditField
       }
     }
 
-    if (strlen($value) && !$seen) {
+    if (strlen($value ?? '') && !$seen) {
       $name = pht('Custom Query ("%s")', $value);
     } else {
       $name = pht('(None)');

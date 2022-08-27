@@ -57,7 +57,7 @@ final class PhabricatorS3FileStorageEngine
     $parts[] = 'phabricator';
 
     $instance_name = PhabricatorEnv::getEnvConfig('cluster.instance');
-    if (strlen($instance_name)) {
+    if (strlen($instance_name ?? '')) {
       $parts[] = $instance_name;
     }
 

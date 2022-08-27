@@ -12,7 +12,7 @@ final class PhabricatorDiffInlineCommentContentState
     }
 
     if ($this->getContentHasSuggestion()) {
-      if (strlen($this->getContentSuggestionText())) {
+      if (strlen($this->getContentSuggestionText() ?? '')) {
         return false;
       }
     }

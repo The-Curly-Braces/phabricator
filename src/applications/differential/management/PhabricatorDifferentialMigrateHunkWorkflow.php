@@ -75,7 +75,7 @@ final class PhabricatorDifferentialMigrateHunkWorkflow
       DifferentialHunk::DATATYPE_FILE,
     );
     $types = array_fuse($types);
-    if (strlen($storage)) {
+    if (strlen($storage ?? '')) {
       if (!isset($types[$storage])) {
         throw new PhutilArgumentUsageException(
           pht(

@@ -152,7 +152,7 @@ final class PhabricatorDocumentRef
     // If the file is longer than the snippet, we don't detect the content
     // as JSON. We could use some kind of heuristic here if we wanted, but
     // see PHI749 for a false positive.
-    if (strlen($snippet) < $this->getByteLength()) {
+    if (strlen($snippet ?? '') < $this->getByteLength()) {
       return false;
     }
 

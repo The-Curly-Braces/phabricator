@@ -96,7 +96,7 @@ abstract class PhortunePaymentProvider extends Phobject {
     array $issues);
 
   protected function renderConfigurationSecret($value) {
-    if (strlen($value)) {
+    if (strlen($value ?? '')) {
       return str_repeat('*', strlen($value));
     }
     return '';
