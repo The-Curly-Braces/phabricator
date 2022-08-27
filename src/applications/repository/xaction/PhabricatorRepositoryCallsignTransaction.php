@@ -10,7 +10,7 @@ final class PhabricatorRepositoryCallsignTransaction
   }
 
   public function generateNewValue($object, $value) {
-    if (strlen($value)) {
+    if (strlen($value ?? '')) {
       return $value;
     }
 
@@ -25,12 +25,12 @@ final class PhabricatorRepositoryCallsignTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (!strlen($old)) {
+    if (!strlen($old ?? '')) {
       return pht(
         '%s set the callsign for this repository to %s.',
         $this->renderAuthor(),
         $this->renderNewValue());
-    } else if (!strlen($new)) {
+    } else if (!strlen($new ?? '')) {
       return pht(
         '%s removed the callsign (%s) for this repository.',
         $this->renderAuthor(),

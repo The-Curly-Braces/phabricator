@@ -125,7 +125,7 @@ final class PhabricatorPolicyManagementUnlockWorkflow
       pht('Modified object policies.'));
 
     $uri = $handle->getURI();
-    if (strlen($uri)) {
+    if (strlen($uri ?? '')) {
       echo tsprintf(
         "\n        **%s**: __%s__\n\n",
         pht('Object URI'),

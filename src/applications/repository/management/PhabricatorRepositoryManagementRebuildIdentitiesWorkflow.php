@@ -220,7 +220,7 @@ final class PhabricatorRepositoryManagementRebuildIdentitiesWorkflow
 
       $committer_name = $data->getCommitterString();
       $committer_phid = $commit->getCommitterIdentityPHID();
-      if (strlen($committer_name)) {
+      if (strlen($committer_name ?? '')) {
         $committer_identity = $this->getIdentityForCommit(
           $commit,
           $committer_name);

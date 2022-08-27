@@ -41,7 +41,7 @@ final class PhabricatorWorkboardViewState
       $this->requestState['filter'] = $request->getStr('filter');
     }
 
-    if (strlen($request->getURIData('queryKey'))) {
+    if (strlen($request->getURIData('queryKey') ?? '')) {
       $this->requestState['filter'] = $request->getURIData('queryKey');
     }
 
@@ -168,7 +168,7 @@ final class PhabricatorWorkboardViewState
   }
 
   public function getQueryKey() {
-    $request_query = idx($this->requestState, 'filter');
+    $request_query = idx($this->requestState, 'filter') ?? '';
     if (strlen($request_query)) {
       return $request_query;
     }
@@ -201,7 +201,7 @@ final class PhabricatorWorkboardViewState
   private function getDefaultQueryKey() {
     $project = $this->getProject();
 
-    $default_query = $project->getDefaultWorkboardFilter();
+    $default_query = $project->getDefaultWorkboardFilter() ?? '';
 
     if (strlen($default_query)) {
       return $default_query;

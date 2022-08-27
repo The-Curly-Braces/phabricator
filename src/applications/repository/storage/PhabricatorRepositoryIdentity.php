@@ -121,7 +121,7 @@ final class PhabricatorRepositoryIdentity
 
     $byte_limit = $this->getColumnMaximumByteLength('emailAddress');
     $email_address = phutil_utf8ize($email_address);
-    if (strlen($email_address) > $byte_limit) {
+    if (strlen($email_address ?? '') > $byte_limit) {
       $email_address = null;
     }
 

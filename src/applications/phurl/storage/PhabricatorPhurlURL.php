@@ -100,7 +100,7 @@ final class PhabricatorPhurlURL extends PhabricatorPhurlDAO
   }
 
   public function getRedirectURI() {
-    if (strlen($this->getAlias())) {
+    if (strlen($this->getAlias() ?? '')) {
       $path = '/u/'.$this->getAlias();
     } else {
       $path = '/u/'.$this->getID();

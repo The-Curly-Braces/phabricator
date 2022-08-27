@@ -152,7 +152,7 @@ final class PhabricatorNotificationServerRef
       ->setPath($full_path);
 
     $instance = PhabricatorEnv::getEnvConfig('cluster.instance');
-    if (strlen($instance)) {
+    if (strlen($instance ?? '')) {
       $uri->replaceQueryParam('instance', $instance);
     }
 
@@ -161,7 +161,7 @@ final class PhabricatorNotificationServerRef
 
   public function getWebsocketURI($to_path = null) {
     $instance = PhabricatorEnv::getEnvConfig('cluster.instance');
-    if (strlen($instance)) {
+    if (strlen($instance ?? '')) {
       $to_path = $to_path.'~'.$instance.'/';
     }
 

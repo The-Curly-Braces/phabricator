@@ -17,13 +17,13 @@ final class PhabricatorProjectTriggerNameTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($old) && strlen($new)) {
+    if (strlen($old ?? '') && strlen($new ?? '')) {
       return pht(
         '%s renamed this trigger from %s to %s.',
         $this->renderAuthor(),
         $this->renderOldValue(),
         $this->renderNewValue());
-    } else if (strlen($new)) {
+    } else if (strlen($new ?? '')) {
       return pht(
         '%s named this trigger %s.',
         $this->renderAuthor(),

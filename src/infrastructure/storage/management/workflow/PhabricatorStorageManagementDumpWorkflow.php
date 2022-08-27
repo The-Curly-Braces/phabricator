@@ -245,7 +245,7 @@ final class PhabricatorStorageManagementDumpWorkflow
     $password = $api->getPassword();
     if ($password) {
       $openedPassword = $password->openEnvelope() ?? '';
-      if (strlen($openedPassword)) {
+      if (strlen($openedPassword ?? '')) {
         $has_password = true;
       }
     }

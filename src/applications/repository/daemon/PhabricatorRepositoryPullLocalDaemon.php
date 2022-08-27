@@ -506,7 +506,7 @@ final class PhabricatorRepositoryPullLocalDaemon
       return PhabricatorTime::getNow() + $smart_wait;
     }
 
-    if (strlen($stderr)) {
+    if (strlen($stderr ?? '')) {
       $stderr_msg = pht(
         'Unexpected output while updating repository "%s": %s',
         $display_name,

@@ -70,7 +70,7 @@ final class PhabricatorConpherenceProfileMenuItem
     }
 
     $name = $this->getName($config ?? '');
-    if (strlen($name)) {
+    if (strlen($name ?? '')) {
       return $name;
     }
 

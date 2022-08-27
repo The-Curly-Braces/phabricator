@@ -26,7 +26,7 @@ final class PhabricatorProjectMoveController
 
     $edit_header = null;
     $raw_header = $request->getStr('header');
-    if (strlen($raw_header)) {
+    if (strlen($raw_header ?? '')) {
       $edit_header = phutil_json_decode($raw_header);
     } else {
       $edit_header = array();

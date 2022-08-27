@@ -86,7 +86,7 @@ final class PhabricatorProjectDatasource
       if (!strlen($slug)) {
         foreach ($proj->getSlugs() as $slug_object) {
           $slug = $slug_object->getSlug();
-          if (strlen($slug)) {
+          if (strlen($slug ?? '')) {
             break;
           }
         }
@@ -132,7 +132,7 @@ final class PhabricatorProjectDatasource
         ->setPriorityType('proj')
         ->setClosed($closed);
 
-      if (strlen($slug)) {
+      if (strlen($slug ?? '')) {
         $proj_result->setAutocomplete('#'.$slug);
       }
 
@@ -142,7 +142,7 @@ final class PhabricatorProjectDatasource
         $proj_result->addAttribute($proj->getDisplayIconName());
 
         $description = idx($descriptions, $phid);
-        if (strlen($description)) {
+        if (strlen($description ?? '')) {
           $summary = PhabricatorMarkupEngine::summarizeSentence($description);
           $proj_result->addAttribute($summary);
         }

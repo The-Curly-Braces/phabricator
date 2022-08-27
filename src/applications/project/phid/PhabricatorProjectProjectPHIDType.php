@@ -43,7 +43,7 @@ final class PhabricatorProjectProjectPHIDType extends PhabricatorPHIDType {
 
       $handle->setName($name);
 
-      if (strlen($slug)) {
+      if (strlen($slug ?? '')) {
         $handle->setObjectName('#'.$slug);
         $handle->setMailStampName('#'.$slug);
         $handle->setURI("/tag/{$slug}/");
