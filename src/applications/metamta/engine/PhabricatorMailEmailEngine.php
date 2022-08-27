@@ -91,7 +91,7 @@ final class PhabricatorMailEmailEngine
       $parts = array();
 
       $encrypt_uri = $mail->getMustEncryptURI();
-      if (!strlen($encrypt_uri)) {
+      if (!strlen($encrypt_uri ?? '')) {
         $encrypt_phid = $mail->getRelatedPHID();
         if ($encrypt_phid) {
           $encrypt_uri = urisprintf(
@@ -129,7 +129,7 @@ final class PhabricatorMailEmailEngine
       $body .= pht('(This email was truncated at %d bytes.)', $body_limit);
     }
     $message->setTextBody($body);
-    $body_limit -= strlen($body);
+    $body_limit -= strlen($body ?? '');
 
     // If we sent a different message body than we were asked to, record
     // what we actually sent to make debugging and diagnostics easier.
@@ -242,7 +242,7 @@ final class PhabricatorMailEmailEngine
     }
 
     // If we don't have a display name, fill in a default.
-    if (!strlen($reply_address->getDisplayName())) {
+    if (!strlen($reply_address->getDisplayName() ?? '')) {
       $reply_address->setDisplayName(PlatformSymbols::getPlatformServerName());
     }
 
@@ -313,7 +313,7 @@ final class PhabricatorMailEmailEngine
     // a generic one.
     if ($must_encrypt) {
       $encrypt_subject = $mail->getMustEncryptSubject();
-      if (!strlen($encrypt_subject)) {
+      if (!strlen($encrypt_subject ?? '')) {
         $encrypt_subject = pht('Object Updated');
       }
       $subject[] = $encrypt_subject;
@@ -507,7 +507,7 @@ final class PhabricatorMailEmailEngine
   public function newDefaultEmailAddress() {
     $raw_address = PhabricatorEnv::getEnvConfig('metamta.default-address');
 
-    if (!strlen($raw_address)) {
+    if (!strlen($raw_address ?? '')) {
       $domain = $this->newMailDomain();
       $raw_address = "noreply@{$domain}";
     }
