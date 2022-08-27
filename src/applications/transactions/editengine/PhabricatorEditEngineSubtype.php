@@ -89,7 +89,7 @@ final class PhabricatorEditEngineSubtype
   }
 
   public function hasTagView() {
-    return (bool)strlen($this->getTagText());
+    return (bool)strlen($this->getTagText() ?? '');
   }
 
   public function newTagView() {
@@ -178,7 +178,7 @@ final class PhabricatorEditEngineSubtype
 
       $map[$key] = true;
 
-      $name = $value['name'];
+      $name = $value['name'] ?? '';
       if (!strlen($name)) {
         throw new Exception(
           pht(
