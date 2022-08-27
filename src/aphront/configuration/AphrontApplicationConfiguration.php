@@ -823,7 +823,7 @@ final class AphrontApplicationConfiguration
     $raw_input = PhabricatorStartup::getRawInput();
     $parser = new PhutilQueryStringParser();
 
-    if ($raw_input !== null && strlen($raw_input)) {
+    if (strlen($raw_input ?? '')) {
       $content_type = idx($_SERVER, 'CONTENT_TYPE');
       $is_multipart = preg_match('@^multipart/form-data@i', $content_type);
       if ($is_multipart) {
