@@ -51,7 +51,7 @@ abstract class PhabricatorTypeaheadDatasource extends Phobject {
   }
 
   public function getPrefixQuery() {
-    return phutil_utf8_strtolower($this->getRawQuery());
+    return phutil_utf8_strtolower($this->getRawQuery() ?? '');
   }
 
   public function getRawQuery() {
