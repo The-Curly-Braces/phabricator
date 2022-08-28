@@ -30,7 +30,7 @@ final class PhabricatorStandardCustomFieldRemarkup
   public function renderPropertyViewValue(array $handles) {
     $value = $this->getFieldValue();
 
-    if (!strlen($value)) {
+    if (!strlen($value ?? '')) {
       return null;
     }
 
