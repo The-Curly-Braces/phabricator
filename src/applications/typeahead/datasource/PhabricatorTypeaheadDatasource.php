@@ -147,8 +147,8 @@ abstract class PhabricatorTypeaheadDatasource extends Phobject {
   }
 
   public static function tokenizeString($string) {
-    $string = phutil_utf8_strtolower($string);
-    $string = trim($string ?? '');
+    $string = phutil_utf8_strtolower($string ?? '');
+    $string = trim($string);
     if (!strlen($string)) {
       return array();
     }
