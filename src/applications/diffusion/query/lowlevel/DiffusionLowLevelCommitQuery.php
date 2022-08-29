@@ -126,11 +126,11 @@ final class DiffusionLowLevelCommitQuery
       $head = $parts[6];
       $tail = $parts[7];
 
-      if (strlen($head) && strlen($tail)) {
+      if (strlen($head ?? '') && strlen($tail)) {
         $body = $head."\n\n".$tail;
-      } else if (strlen($head)) {
+      } else if (strlen($head ?? '')) {
         $body = $head;
-      } else if (strlen($tail)) {
+      } else if (strlen($tail ?? '')) {
         $body = $tail;
       } else {
         $body = '';

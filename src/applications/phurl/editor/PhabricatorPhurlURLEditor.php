@@ -78,7 +78,7 @@ final class PhabricatorPhurlURLEditor
     $description = $object->getDescription();
     $body = parent::buildMailBody($object, $xactions);
 
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $body->addRemarkupSection(
         pht('URL DESCRIPTION'),
         $object->getDescription());

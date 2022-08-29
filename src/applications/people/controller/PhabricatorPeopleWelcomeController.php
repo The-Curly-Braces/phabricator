@@ -40,7 +40,7 @@ final class PhabricatorPeopleWelcomeController
     $v_message = $request->getStr('message');
 
     if ($request->isFormPost()) {
-      if (strlen($v_message)) {
+      if (strlen($v_message ?? '')) {
         $welcome_engine->setWelcomeMessage($v_message);
       }
 

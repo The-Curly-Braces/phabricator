@@ -158,7 +158,7 @@ final class ConpherenceThread extends ConpherenceDAO
    */
   public function getStaticTitle() {
     $title = $this->getTitle();
-    if (strlen($title)) {
+    if (strlen($title ?? '')) {
       return $title;
     }
 

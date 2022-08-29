@@ -38,7 +38,7 @@ final class PHUICurtainPanelView extends AphrontTagView {
     $header = null;
 
     $header_text = $this->getHeaderText();
-    if (strlen($header_text)) {
+    if ($header_text !== null && strlen($header_text)) {
       $header = phutil_tag(
         'div',
         array(

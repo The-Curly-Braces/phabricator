@@ -103,7 +103,7 @@ final class PhabricatorAuthMessageViewController
       ->setViewer($viewer);
 
     $full_description = $message_type->getFullDescription();
-    if (strlen($full_description)) {
+    if ($full_description !== null && strlen($full_description)) {
       $view->addTextContent(new PHUIRemarkupView($viewer, $full_description));
     } else {
       $short_description = $message_type->getShortDescription();
@@ -111,7 +111,7 @@ final class PhabricatorAuthMessageViewController
     }
 
     $message_text = $message->getMessageText();
-    if (strlen($message_text)) {
+    if ($message_text !== null && strlen($message_text)) {
       $view->addSectionHeader(
         pht('Message Preview'),
         PHUIPropertyListView::ICON_SUMMARY);
@@ -120,7 +120,7 @@ final class PhabricatorAuthMessageViewController
     }
 
     $default_text = $message_type->getDefaultMessageText();
-    if (strlen($default_text)) {
+    if ($default_text !== null && strlen($default_text)) {
       $view->addSectionHeader(
         pht('Default Message'),
         PHUIPropertyListView::ICON_SUMMARY);

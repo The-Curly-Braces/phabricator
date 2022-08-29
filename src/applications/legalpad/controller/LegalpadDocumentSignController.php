@@ -280,7 +280,7 @@ final class LegalpadDocumentSignController extends LegalpadController {
     }
 
     $preamble_box = null;
-    if (strlen($document->getPreamble())) {
+    if (strlen($document->getPreamble() ?? '')) {
       $preamble_text = new PHUIRemarkupView($viewer, $document->getPreamble());
 
       // NOTE: We're avoiding `setObject()` here so we don't pick up extra UI
@@ -376,7 +376,7 @@ final class LegalpadDocumentSignController extends LegalpadController {
           );
         } else if ($request->isFormPost()) {
           $email = new PhutilEmailAddress($request->getStr('email'));
-          if (strlen($email->getDomainName())) {
+          if (strlen($email->getDomainName() ?? '')) {
             $email_obj = id(new PhabricatorUserEmail())
               ->loadOneWhere('address = %s', $email->getAddress());
             if ($email_obj) {

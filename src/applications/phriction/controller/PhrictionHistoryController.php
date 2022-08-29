@@ -90,7 +90,7 @@ final class PhrictionHistoryController
         ->setStatusIcon($icon.' '.$color);
 
       $description = $content->getDescription();
-      if (strlen($description)) {
+      if (strlen($description ?? '')) {
         $item->addAttribute($description);
       }
 

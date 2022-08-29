@@ -195,7 +195,7 @@ final class DiffusionSetPasswordSettingsPanel extends PhabricatorSettingsPanel {
         ->setLabel(pht('Best Available Algorithm'))
         ->setValue(PhabricatorPasswordHasher::getBestAlgorithmName()));
 
-    if (strlen($hash_envelope->openEnvelope())) {
+    if (strlen($hash_envelope->openEnvelope() ?? '')) {
       try {
         $can_upgrade = PhabricatorPasswordHasher::canUpgradeHash(
           $hash_envelope);

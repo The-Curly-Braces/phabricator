@@ -370,7 +370,7 @@ abstract class PhabricatorDiffInlineCommentQuery
         continue;
       }
 
-      $saw_context = (strlen(trim($line)) > 3);
+      $saw_context = (strlen(trim($line ?? '')) > 3);
     }
 
     if ($is_head) {

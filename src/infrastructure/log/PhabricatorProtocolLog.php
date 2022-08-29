@@ -84,7 +84,7 @@ final class PhabricatorProtocolLog
 
     $bytes = implode('', $bytes);
 
-    if (strlen($bytes)) {
+    if (strlen($bytes ?? '')) {
       $this->writeBytes($mode, $bytes);
     }
   }

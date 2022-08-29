@@ -523,7 +523,7 @@ final class PhabricatorUser
     //  - Unit tests, obviously.
     //  - describeValidUsername() method, above.
 
-    if (strlen($username) > self::MAXIMUM_USERNAME_LENGTH) {
+    if (strlen($username ?? '') > self::MAXIMUM_USERNAME_LENGTH) {
       return false;
     }
 
@@ -555,7 +555,7 @@ final class PhabricatorUser
   }
 
   public function getFullName() {
-    if (strlen($this->getRealName())) {
+    if (strlen($this->getRealName() ?? '')) {
       return $this->getUsername().' ('.$this->getRealName().')';
     } else {
       return $this->getUsername();

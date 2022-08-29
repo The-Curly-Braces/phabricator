@@ -86,7 +86,7 @@ final class DifferentialCreateCommentConduitAPIMethod
     }
 
     $content = $request->getValue('message');
-    if (strlen($content)) {
+    if (strlen($content ?? '')) {
       $xactions[] = id(new DifferentialTransaction())
         ->setTransactionType(PhabricatorTransactions::TYPE_COMMENT)
         ->attachComment(

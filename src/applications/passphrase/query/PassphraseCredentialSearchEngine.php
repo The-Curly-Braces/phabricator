@@ -37,7 +37,7 @@ final class PassphraseCredentialSearchEngine
       $query->withIsDestroyed($map['isDestroyed']);
     }
 
-    if (strlen($map['name'])) {
+    if (strlen($map['name'] ?? '')) {
       $query->withNameContains($map['name']);
     }
 

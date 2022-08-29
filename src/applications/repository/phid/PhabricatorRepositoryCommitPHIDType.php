@@ -71,7 +71,7 @@ final class PhabricatorRepositoryCommitPHIDType extends PhabricatorPHIDType {
       }
 
       $summary = $commit->getSummary();
-      if (strlen($summary)) {
+      if (strlen($summary ?? '')) {
         $full_name = $name.': '.$summary;
       } else {
         $full_name = $name;

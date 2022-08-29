@@ -355,7 +355,7 @@ final class PhabricatorPasteQuery
     $lines = phutil_split_lines($snippet);
     $line_count = count($lines);
 
-    if (strlen($snippet) > 1024) {
+    if (strlen($snippet ?? '') > 1024) {
       $snippet_type = PhabricatorPasteSnippet::FIRST_BYTES;
       $snippet = id(new PhutilUTF8StringTruncator())
         ->setMaximumBytes(1024)

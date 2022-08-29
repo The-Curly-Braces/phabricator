@@ -91,7 +91,7 @@ final class LegalpadDocumentManageController extends LegalpadController {
       $document_body, LegalpadDocumentBody::MARKUP_FIELD_TEXT);
 
     $preamble_box = null;
-    if (strlen($document->getPreamble())) {
+    if (strlen($document->getPreamble() ?? '')) {
       $preamble_text = new PHUIRemarkupView($viewer, $document->getPreamble());
       $view->addTextContent($preamble_text);
       $view->addSectionHeader('');

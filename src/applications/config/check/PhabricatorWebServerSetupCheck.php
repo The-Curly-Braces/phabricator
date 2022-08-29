@@ -23,7 +23,7 @@ final class PhabricatorWebServerSetupCheck extends PhabricatorSetupCheck {
     }
 
     $base_uri = PhabricatorEnv::getEnvConfig('phabricator.base-uri');
-    if (!strlen($base_uri)) {
+    if ($base_uri && !strlen($base_uri)) {
       // If `phabricator.base-uri` is not set then we can't really do
       // anything.
       return;
@@ -324,7 +324,7 @@ final class PhabricatorWebServerSetupCheck extends PhabricatorSetupCheck {
       '"Content-Encoding: gzip", but received different bytes than it '.
       'sent.');
 
-    $prefix_len = min(strlen($raw_body), strlen($uncompressed));
+    $prefix_len = min(strlen($raw_body ?? ''), strlen($uncompressed));
     if ($prefix_len > 16 && !strncmp($raw_body, $uncompressed, $prefix_len)) {
       $message[] = pht(
         'The request body that the server received had already been '.
@@ -373,7 +373,7 @@ final class PhabricatorWebServerSetupCheck extends PhabricatorSetupCheck {
       $snip = substr($raw, 0, 24);
       $display = phutil_loggable_string($snip);
 
-      if (strlen($snip) < strlen($raw)) {
+      if (strlen($snip ?? '') < strlen($raw ?? '')) {
         $display .= '...';
       }
     }

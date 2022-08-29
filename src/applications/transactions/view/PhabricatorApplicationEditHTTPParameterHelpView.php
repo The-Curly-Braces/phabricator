@@ -255,7 +255,7 @@ EOTEXT
       $options = $field->getOptions();
       $label = $field->getLabel();
       foreach ($options as $option_key => $option_value) {
-        if (strlen($option_key)) {
+        if (strlen($option_key ?? '')) {
           $option_display = $option_key;
         } else {
           $option_display = phutil_tag('em', array(), pht('<empty>'));

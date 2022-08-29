@@ -76,7 +76,7 @@ final class PhabricatorAuthFactorProvider
 
   public function getDisplayName() {
     $name = $this->getName();
-    if (strlen($name)) {
+    if (strlen($name ?? '')) {
       return $name;
     }
 

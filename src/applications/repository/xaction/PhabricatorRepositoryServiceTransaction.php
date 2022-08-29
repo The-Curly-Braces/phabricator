@@ -25,12 +25,12 @@ final class PhabricatorRepositoryServiceTransaction
     $old = $this->getOldValue();
     $new = $this->getOldValue();
 
-    if (strlen($old) && !strlen($new)) {
+    if (strlen($old ?? '') && !strlen($new ?? '')) {
       return pht(
         '%s moved storage for this repository from %s to local.',
         $this->renderAuthor(),
         $this->renderOldHandle());
-    } else if (!strlen($old) && strlen($new)) {
+    } else if (!strlen($old ?? '') && strlen($new ?? '')) {
       // TODO: Possibly, we should distinguish between automatic assignment
       // on creation vs explicit adjustment.
       return pht(

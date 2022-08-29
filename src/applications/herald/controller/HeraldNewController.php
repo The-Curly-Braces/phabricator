@@ -35,7 +35,7 @@ final class HeraldNewController extends HeraldController {
           $e_object = null;
 
           if ($request->isFormPost()) {
-            if (strlen($object_name)) {
+            if (strlen($object_name ?? '')) {
               $target_object = id(new PhabricatorObjectQuery())
                 ->setViewer($viewer)
                 ->withNames(array($object_name))

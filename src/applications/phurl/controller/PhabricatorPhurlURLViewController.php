@@ -139,7 +139,7 @@ final class PhabricatorPhurlURLViewController
       $url->getAlias());
 
     $description = $url->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = new PHUIRemarkupView($viewer, $description);
       $properties->addSectionHeader(pht('Description'));
       $properties->addTextContent($description);

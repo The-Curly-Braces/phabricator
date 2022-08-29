@@ -181,17 +181,17 @@ $engine->setStdin($stdin);
 $engine->setOriginalArgv(array_slice($argv, 2));
 
 $remote_address = getenv(DiffusionCommitHookEngine::ENV_REMOTE_ADDRESS);
-if (strlen($remote_address)) {
+if (strlen($remote_address ?? '')) {
   $engine->setRemoteAddress($remote_address);
 }
 
 $remote_protocol = getenv(DiffusionCommitHookEngine::ENV_REMOTE_PROTOCOL);
-if (strlen($remote_protocol)) {
+if (strlen($remote_protocol ?? '')) {
   $engine->setRemoteProtocol($remote_protocol);
 }
 
 $request_identifier = getenv(DiffusionCommitHookEngine::ENV_REQUEST);
-if (strlen($request_identifier)) {
+if (strlen($request_identifier ?? '')) {
   $engine->setRequestIdentifier($request_identifier);
 }
 

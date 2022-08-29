@@ -129,7 +129,7 @@ final class PhabricatorMercurialGraphStream
     //  151:1f6c61a60586 154:1d5f799ebe1e
 
     $parents = trim($parents);
-    if (strlen($parents)) {
+    if (strlen($parents ?? '')) {
       $local = array();
 
       $parents = explode(' ', $parents);

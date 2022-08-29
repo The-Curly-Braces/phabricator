@@ -205,7 +205,7 @@ final class PhabricatorConfigOption
 
   public function newDescriptionRemarkupView(PhabricatorUser $viewer) {
     $description = $this->getDescription();
-    if (!strlen($description)) {
+    if (!strlen($description ?? '')) {
       return null;
     }
 

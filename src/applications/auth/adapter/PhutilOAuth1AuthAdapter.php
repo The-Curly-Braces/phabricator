@@ -104,7 +104,7 @@ abstract class PhutilOAuth1AuthAdapter extends PhutilAuthAdapter {
       ->setSignatureMethod($this->getSignatureMethod());
 
     $consumer_key = $this->getConsumerKey();
-    if (strlen($consumer_key)) {
+    if ($consumer_key !== null && strlen($consumer_key)) {
       $future->setConsumerKey($consumer_key);
     } else {
       throw new Exception(
@@ -118,15 +118,15 @@ abstract class PhutilOAuth1AuthAdapter extends PhutilAuthAdapter {
       $future->setConsumerSecret($consumer_secret);
     }
 
-    if (strlen($this->getToken())) {
+    if (strlen($this->getToken() ?? '')) {
       $future->setToken($this->getToken());
     }
 
-    if (strlen($this->getTokenSecret())) {
+    if (strlen($this->getTokenSecret() ?? '')) {
       $future->setTokenSecret($this->getTokenSecret());
     }
 
-    if ($this->getPrivateKey()) {
+    if ($this->getPrivateKey() ?? '') {
       $future->setPrivateKey($this->getPrivateKey());
     }
 
@@ -137,7 +137,7 @@ abstract class PhutilOAuth1AuthAdapter extends PhutilAuthAdapter {
     $request_token_uri = $this->getRequestTokenURI();
 
     $future = $this->newOAuth1Future($request_token_uri);
-    if (strlen($this->getCallbackURI())) {
+    if (strlen($this->getCallbackURI() ?? '')) {
       $future->setCallbackURI($this->getCallbackURI());
     }
 

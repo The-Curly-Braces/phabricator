@@ -81,7 +81,7 @@ final class PhabricatorPeopleInviteSendController
             $viewer->getFullName(),
             PlatformSymbols::getPlatformServerName());
 
-          if (strlen(trim($message))) {
+          if (strlen(trim($message ?? ''))) {
             $template[] = $message;
           }
 

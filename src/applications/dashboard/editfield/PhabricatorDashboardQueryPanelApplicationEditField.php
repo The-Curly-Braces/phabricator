@@ -26,7 +26,7 @@ final class PhabricatorDashboardQueryPanelApplicationEditField
     $options = array();
 
     $value = $this->getValueForControl();
-    if (strlen($value) && empty($engines[$value])) {
+    if (strlen($value ?? '') && empty($engines[$value])) {
       $options[$value] = $value;
     }
 

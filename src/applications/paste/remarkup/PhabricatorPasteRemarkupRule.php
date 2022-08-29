@@ -26,7 +26,7 @@ final class PhabricatorPasteRemarkupRule extends PhabricatorObjectRemarkupRule {
       ->setPaste($object)
       ->setHandle($handle);
 
-    if (strlen($options)) {
+    if (strlen($options ?? '')) {
       $parser = new PhutilSimpleOptions();
       $opts = $parser->parse(substr($options, 1));
 

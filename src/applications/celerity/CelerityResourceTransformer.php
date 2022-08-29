@@ -251,7 +251,7 @@ final class CelerityResourceTransformer extends Phobject {
     $maximum_data_size = (1024 * 32);
 
     $data = $this->celerityMap->getResourceDataForName($resource_name);
-    if (strlen($data) >= $maximum_data_size) {
+    if (strlen($data ?? '') >= $maximum_data_size) {
       // If the data is already too large on its own, just bail before
       // encoding it.
       return null;

@@ -106,19 +106,19 @@ final class PhabricatorFerretFulltextEngineExtension
     foreach ($ferret_corpus_map as $key => $fields) {
       $raw_corpus = $fields['raw'];
       $raw_corpus = implode("\n", $raw_corpus);
-      if (strlen($raw_corpus)) {
+      if (strlen($raw_corpus ?? '')) {
         $ngrams_source[] = $raw_corpus;
       }
 
       $normal_corpus = $fields['normal'];
       $normal_corpus = implode("\n", $normal_corpus);
-      if (strlen($normal_corpus)) {
+      if (strlen($normal_corpus ?? '')) {
         $ngrams_source[] = $normal_corpus;
       }
 
       $term_corpus = $fields['term'];
       $term_corpus = implode("\n", $term_corpus);
-      if (strlen($term_corpus)) {
+      if (strlen($term_corpus ?? '')) {
         $ngrams_source[] = $term_corpus;
       }
 

@@ -71,7 +71,7 @@ final class PhabricatorSearchResultView extends AphrontView {
       return $str;
     }
 
-    if (strlen($str) > 2048) {
+    if (strlen($str ?? '') > 2048) {
       return $str;
     }
 

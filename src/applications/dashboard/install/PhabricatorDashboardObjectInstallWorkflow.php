@@ -26,7 +26,7 @@ abstract class PhabricatorDashboardObjectInstallWorkflow
     }
 
     $target = null;
-    if (strlen($target_identifier)) {
+    if (strlen($target_identifier ?? '')) {
       $targets = array();
 
       if (ctype_digit($target_identifier)) {
@@ -74,7 +74,7 @@ abstract class PhabricatorDashboardObjectInstallWorkflow
     }
 
     $errors = array();
-    if (strlen($target_identifier)) {
+    if (strlen($target_identifier ?? '')) {
       if (!$target) {
         $errors[] = pht('Choose a valid object.');
       } else if (!$can_edit) {

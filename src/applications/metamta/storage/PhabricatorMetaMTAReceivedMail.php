@@ -417,7 +417,7 @@ final class PhabricatorMetaMTAReceivedMail extends PhabricatorMetaMTADAO {
     $body = $this->getCleanTextBody();
     $attachments = $this->getAttachments();
 
-    if (strlen($body) || $attachments) {
+    if (strlen($body ?? '') || $attachments) {
       return;
     }
 
@@ -524,7 +524,7 @@ EOBODY
   public function newFromAddress() {
     $raw_from = $this->getHeader('From');
 
-    if (strlen($raw_from)) {
+    if (strlen($raw_from ?? '')) {
       return new PhutilEmailAddress($raw_from);
     }
 

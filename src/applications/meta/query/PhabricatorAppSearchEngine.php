@@ -45,7 +45,7 @@ final class PhabricatorAppSearchEngine
       ->withUnlisted(false);
 
     $name = $saved->getParameter('name');
-    if (strlen($name)) {
+    if (strlen($name ?? '')) {
       $query->withNameContains($name);
     }
 

@@ -157,7 +157,7 @@ final class HeraldPreCommitContentAdapter extends HeraldPreCommitAdapter {
         // instead.
         $ref = $this->getCommitRef();
         $committer = $ref->getCommitter();
-        if (strlen($committer)) {
+        if (strlen($committe ?? '')) {
           return $committer;
         }
         return $ref->getAuthor();

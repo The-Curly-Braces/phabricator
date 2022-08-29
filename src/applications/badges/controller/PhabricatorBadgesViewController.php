@@ -63,7 +63,7 @@ final class PhabricatorBadgesViewController
       ->setUser($viewer);
 
     $description = $badge->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $view->addTextContent(
         new PHUIRemarkupView($viewer, $description));
     }

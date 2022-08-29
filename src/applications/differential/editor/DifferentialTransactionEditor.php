@@ -768,7 +768,7 @@ final class DifferentialTransactionEditor
         if (($patch !== null) && $config_attach) {
           // See T12033, T11767, and PHI55. This is a crude fix to stop the
           // major concrete problems that lackluster email size limits cause.
-          if (strlen($patch) < $body_limit) {
+          if (strlen($patch ?? '') < $body_limit) {
             $name = pht('D%s.%s.patch', $object->getID(), $diff->getID());
             $mime_type = 'text/x-patch; charset=utf-8';
             $body->addAttachment(

@@ -238,7 +238,7 @@ final class PhabricatorRepositoryPullEngine
     $identifier = $repository->getPHID();
 
     $instance = PhabricatorEnv::getEnvConfig('cluster.instance');
-    if (strlen($instance)) {
+    if (strlen($instance ?? '')) {
       $identifier = "{$identifier}:{$instance}";
     }
 

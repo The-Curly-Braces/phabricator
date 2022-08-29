@@ -302,7 +302,7 @@ final class PhortuneCartEditor
 
     $origin_username = $origin_user->getUsername();
     $origin_realname = $origin_user->getRealName();
-    if (strlen($origin_realname)) {
+    if (strlen($origin_realname ?? '')) {
       $origin_display = pht('%s (%s)', $origin_username, $origin_realname);
     } else {
       $origin_display = pht('%s', $origin_username);

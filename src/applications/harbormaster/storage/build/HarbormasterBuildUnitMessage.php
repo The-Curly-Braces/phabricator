@@ -102,7 +102,7 @@ final class HarbormasterBuildUnitMessage
     $obj->setDuration((float)idx($dict, 'duration'));
 
     $path = idx($dict, 'path');
-    if (strlen($path)) {
+    if (strlen($path ?? '')) {
       $obj->setProperty('path', $path);
     }
 
@@ -291,12 +291,12 @@ final class HarbormasterBuildUnitMessage
     $name = $this->getName();
 
     $namespace = $this->getNamespace();
-    if (strlen($namespace)) {
+    if (strlen($namespace ?? '')) {
       $name = $namespace.'::'.$name;
     }
 
     $engine = $this->getEngine();
-    if (strlen($engine)) {
+    if (strlen($engine ?? '')) {
       $name = $engine.' > '.$name;
     }
 

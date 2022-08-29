@@ -79,7 +79,7 @@ final class HarbormasterBuildStep extends HarbormasterDAO
   }
 
   public function getName() {
-    if (strlen($this->name)) {
+    if (strlen($this->name ?? '')) {
       return $this->name;
     }
 

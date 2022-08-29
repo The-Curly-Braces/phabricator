@@ -139,7 +139,7 @@ final class HarbormasterStepEditController
       ->setUser($viewer);
 
     $instructions = $implementation->getEditInstructions();
-    if (strlen($instructions)) {
+    if (strlen($instructions ?? '')) {
       $form->appendRemarkupInstructions($instructions);
     }
 

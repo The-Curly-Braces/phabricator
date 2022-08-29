@@ -96,7 +96,7 @@ final class DiffusionSubversionServeSSHWorkflow
       $in_message = $io_channel->read();
       if ($in_message !== null) {
         $this->peekBuffer .= $in_message;
-        if (strlen($this->peekBuffer) > (1024 * 1024)) {
+        if (strlen($this->peekBuffer ?? '') > (1024 * 1024)) {
           throw new Exception(
             pht(
               'Client transmitted more than 1MB of data without transmitting '.

@@ -45,7 +45,7 @@ final class DiffusionSubversionWireProtocol extends Phobject {
 
         // We have zero or more spaces and then some other character, so throw
         // the spaces away and continue parsing frames.
-        if (strlen($matches[1])) {
+        if (strlen($matches[1] ?? '')) {
           $this->buffer = substr($this->buffer, strlen($matches[1]));
         }
 

@@ -22,7 +22,7 @@ final class DiffusionBrowseController extends DiffusionController {
     // list.
 
     $grep = $request->getStr('grep');
-    if (strlen($grep)) {
+    if (strlen($grep ?? '')) {
       return $this->browseSearch();
     }
 
@@ -377,7 +377,7 @@ final class DiffusionBrowseController extends DiffusionController {
         $results = array();
         break;
       default:
-        if (strlen($this->getRequest()->getStr('grep'))) {
+        if (strlen($this->getRequest()->getStr('grep') ?? '')) {
           $search_mode = 'grep';
           $query_string = $request->getStr('grep');
           $results = $this->callConduitWithDiffusionRequest(

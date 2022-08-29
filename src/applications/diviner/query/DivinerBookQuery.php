@@ -133,7 +133,7 @@ final class DivinerBookQuery extends PhabricatorCursorPagedPolicyAwareQuery {
         $this->phids);
     }
 
-    if (strlen($this->nameLike)) {
+    if (strlen($this->nameLike ?? '')) {
       $where[] = qsprintf(
         $conn,
         'name LIKE %~',
@@ -147,7 +147,7 @@ final class DivinerBookQuery extends PhabricatorCursorPagedPolicyAwareQuery {
         $this->names);
     }
 
-    if (strlen($this->namePrefix)) {
+    if (strlen($this->namePrefix ?? '')) {
       $where[] = qsprintf(
         $conn,
         'name LIKE %>',

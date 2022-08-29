@@ -17,13 +17,13 @@ final class PhortuneMerchantInvoiceEmailTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($old) && strlen($new)) {
+    if (strlen($old ?? '') && strlen($new ?? '')) {
       return pht(
         '%s updated the invoice email from %s to %s.',
         $this->renderAuthor(),
         $this->renderOldValue(),
         $this->renderNewValue());
-    } else if (strlen($old)) {
+    } else if (strlen($old ?? '')) {
       return pht(
         '%s removed the invoice email.',
         $this->renderAuthor());
@@ -39,14 +39,14 @@ final class PhortuneMerchantInvoiceEmailTransaction
     $old = $this->getOldValue();
     $new = $this->getNewValue();
 
-    if (strlen($old) && strlen($new)) {
+    if (strlen($old ?? '') && strlen($new ?? '')) {
       return pht(
         '%s updated %s invoice email from %s to %s.',
         $this->renderAuthor(),
         $this->renderObject(),
         $this->renderOldValue(),
         $this->renderNewValue());
-    } else if (strlen($old)) {
+    } else if (strlen($old ?? '')) {
       return pht(
         '%s removed the invoice email for %s.',
         $this->renderAuthor(),
@@ -69,7 +69,7 @@ final class PhortuneMerchantInvoiceEmailTransaction
 
     $max_length = $object->getColumnMaximumByteLength('invoiceEmail');
     foreach ($xactions as $xaction) {
-      if (strlen($xaction->getNewValue())) {
+      if (strlen($xaction->getNewValue() ?? '')) {
         $email = new PhutilEmailAddress($xaction->getNewValue());
         $domain = $email->getDomainName();
         if (!strlen($domain)) {

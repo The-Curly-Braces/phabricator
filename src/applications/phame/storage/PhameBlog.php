@@ -134,7 +134,7 @@ final class PhameBlog extends PhameDAO
           $example_domain);
     }
 
-    if (strlen($path) && $path != '/') {
+    if (strlen($path ?? '') && $path != '/') {
       return pht(
           'The custom domain should not specify a path (hosting a Phame '.
           'blog at a path is currently not supported). Instead, just provide '.
@@ -169,7 +169,7 @@ final class PhameBlog extends PhameDAO
   }
 
   public function getLiveURI() {
-    if (strlen($this->getDomain())) {
+    if (strlen($this->getDomain() ?? '')) {
       return $this->getExternalLiveURI();
     } else {
       return $this->getInternalLiveURI();

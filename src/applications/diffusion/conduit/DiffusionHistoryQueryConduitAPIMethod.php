@@ -54,7 +54,7 @@ final class DiffusionHistoryQueryConduitAPIMethod
     $offset = $request->getValue('offset');
     $limit = $request->getValue('limit');
 
-    if (strlen($against_hash)) {
+    if (strlen($against_hash ?? '')) {
       $commit_range = "${against_hash}..${commit_hash}";
     } else {
       $commit_range = $commit_hash;
@@ -137,7 +137,7 @@ final class DiffusionHistoryQueryConduitAPIMethod
     // branches).
 
     $path_args = array();
-    if (strlen($path)) {
+    if (strlen($path ?? '')) {
       $path_args[] = $path;
       $revset_arg = hgsprintf(
         'reverse(ancestors(%s))',

@@ -31,7 +31,7 @@ final class PhabricatorApplicationTransactionCommentQuoteController
     $content = rtrim($content, "\r\n");
     $content = phutil_split_lines($content, true);
     foreach ($content as $key => $line) {
-      if (strlen($line) && ($line[0] != '>')) {
+      if (strlen($line ?? '') && ($line[0] != '>')) {
         $content[$key] = '> '.$line;
       } else {
         $content[$key] = '>'.$line;
@@ -45,7 +45,7 @@ final class PhabricatorApplicationTransactionCommentQuoteController
       ->executeOne();
 
     $ref = $request->getStr('ref');
-    if (strlen($ref)) {
+    if (strlen($ref ?? '')) {
       $quote = pht('In %s, %s wrote:', $ref, '@'.$author->getName());
     } else {
       $quote = pht('%s wrote:', '@'.$author->getName());

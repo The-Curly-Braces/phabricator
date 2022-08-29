@@ -46,7 +46,7 @@ final class NuanceManagementImportWorkflow
     }
 
     $select = $args->getArg('cursor');
-    if (strlen($select)) {
+    if (strlen($select ?? '')) {
       if (empty($cursors[$select])) {
         throw new PhutilArgumentUsageException(
           pht(

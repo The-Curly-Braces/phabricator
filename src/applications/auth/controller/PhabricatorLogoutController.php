@@ -51,7 +51,7 @@ final class PhabricatorLogoutController
       // their cookies have some issues. We'll detect cookie issues when they
       // try to login again and tell them to clear any junk.
       $phsid = $request->getCookie(PhabricatorCookies::COOKIE_SESSION);
-      if (strlen($phsid)) {
+      if (strlen($phsid ?? '')) {
         $session = id(new PhabricatorAuthSessionQuery())
           ->setViewer($viewer)
           ->withSessionKeys(array($phsid))

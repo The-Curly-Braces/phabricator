@@ -426,7 +426,7 @@ final class PhortuneStripePaymentProvider extends PhortunePaymentProvider {
     );
 
     $param = idx($map, 'param');
-    if (strlen($param)) {
+    if (strlen($param ?? '')) {
       $rows[] = array(
         pht('Error Param'),
         $param,
@@ -434,7 +434,7 @@ final class PhortuneStripePaymentProvider extends PhortunePaymentProvider {
     }
 
     $decline_code = idx($map, 'decline_code');
-    if (strlen($decline_code)) {
+    if (strlen($decline_code ?? '')) {
       $rows[] = array(
         pht('Decline Code'),
         $decline_code,

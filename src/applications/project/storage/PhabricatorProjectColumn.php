@@ -105,7 +105,7 @@ final class PhabricatorProjectColumn
     }
 
     $name = $this->getName();
-    if (strlen($name)) {
+    if (strlen($name ?? '')) {
       return $name;
     }
 

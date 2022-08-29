@@ -34,7 +34,7 @@ final class PhabricatorAuthManagementRefreshWorkflow
         ));
 
     $username = $args->getArg('user');
-    if (strlen($username)) {
+    if (strlen($username ?? '')) {
       $user = id(new PhabricatorPeopleQuery())
         ->setViewer($viewer)
         ->withUsernames(array($username))

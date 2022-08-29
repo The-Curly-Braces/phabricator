@@ -28,7 +28,7 @@ abstract class PhabricatorTypeaheadCompositeDatasource
 
     // We only need to do a prefix phase query if there's an actual query
     // string. If the user didn't type anything, nothing can possibly match it.
-    if (strlen($this->getRawQuery())) {
+    if (strlen($this->getRawQuery() ?? '')) {
       $phases[] = self::PHASE_PREFIX;
     }
 
@@ -66,7 +66,7 @@ abstract class PhabricatorTypeaheadCompositeDatasource
   protected function loadResultsForPhase($phase, $limit) {
     if ($phase == self::PHASE_PREFIX) {
       $this->prefixString = $this->getPrefixQuery();
-      $this->prefixLength = strlen($this->prefixString);
+      $this->prefixLength = strlen($this->prefixString ?? '');
     }
 
     // If the input query is a function like `members(platy`, and we can
@@ -207,7 +207,7 @@ abstract class PhabricatorTypeaheadCompositeDatasource
   }
 
   protected function sliceResults(array $results) {
-    $offset = $this->getOffset();
+    $offset = $this->getOffset() ?? 0;
     $limit = $this->getLimit();
 
     if ($offset || $limit) {

@@ -10,7 +10,7 @@ final class PhabricatorProjectColumnLimitTransaction
   }
 
   public function generateNewValue($object, $value) {
-    if (strlen($value)) {
+    if (strlen($value ?? '')) {
       return (int)$value;
     } else {
       return null;
@@ -48,7 +48,7 @@ final class PhabricatorProjectColumnLimitTransaction
 
     foreach ($xactions as $xaction) {
       $value = $xaction->getNewValue();
-      if (strlen($value) && !preg_match('/^\d+\z/', $value)) {
+      if (strlen($value ?? '') && !preg_match('/^\d+\z/', $value)) {
         $errors[] = $this->newInvalidError(
           pht(
             'Column point limit must either be empty or a nonnegative '.

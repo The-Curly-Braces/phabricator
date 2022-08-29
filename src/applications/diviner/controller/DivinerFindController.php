@@ -32,12 +32,12 @@ final class DivinerFindController extends DivinerController {
     }
 
     $context = $request->getStr('context');
-    if (strlen($context)) {
+    if (strlen($context ?? '')) {
       $query->withContexts(array($context));
     }
 
     $type = $request->getStr('type');
-    if (strlen($type)) {
+    if (strlen($type ?? '')) {
       $query->withTypes(array($type));
     }
 

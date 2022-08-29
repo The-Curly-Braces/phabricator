@@ -272,7 +272,7 @@ final class PhabricatorMemeEngine extends Phobject {
     $size = $metrics['size'];
 
     $above = $this->getAboveText();
-    if (strlen($above)) {
+    if (strlen($above ?? '')) {
       $x = (int)floor(($dx - $metrics['text']['above']['width']) / 2);
       $y = $metrics['text']['above']['height'] + 12;
 
@@ -280,7 +280,7 @@ final class PhabricatorMemeEngine extends Phobject {
     }
 
     $below = $this->getBelowText();
-    if (strlen($below)) {
+    if (strlen($below ?? '')) {
       $x = (int)floor(($dx - $metrics['text']['below']['width']) / 2);
       $y = $dy - 12 - $metrics['text']['below']['descend'];
 

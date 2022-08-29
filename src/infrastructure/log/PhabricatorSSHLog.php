@@ -24,7 +24,7 @@ final class PhabricatorSSHLog extends Phobject {
       );
 
       $sudo_user = PhabricatorEnv::getEnvConfig('phd.user');
-      if (strlen($sudo_user)) {
+      if (strlen($sudo_user ?? '')) {
         $data['S'] = $sudo_user;
       }
 
@@ -35,7 +35,7 @@ final class PhabricatorSSHLog extends Phobject {
       }
 
       $client = getenv('SSH_CLIENT');
-      if (strlen($client)) {
+      if (strlen($client ?? '')) {
         $remote_address = head(explode(' ', $client));
         $data['r'] = $remote_address;
       }

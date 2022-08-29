@@ -1010,7 +1010,7 @@ final class DiffusionCommitHookEngine extends Phobject {
         '{node}',
         hgsprintf('ancestor(%s, %s)', $key_old, $key_new));
 
-      if (strlen(trim($merge_base_raw))) {
+      if (strlen(trim($merge_base_raw ?? ''))) {
         $merge_base = trim($merge_base_raw);
       }
 
@@ -1133,7 +1133,7 @@ final class DiffusionCommitHookEngine extends Phobject {
       ->setHookWait(phutil_microseconds_since($hook_start));
 
     $identifier = $this->getRequestIdentifier();
-    if (strlen($identifier)) {
+    if (strlen($identifier ?? '')) {
       $event->setRequestIdentifier($identifier);
     }
 
@@ -1225,7 +1225,7 @@ final class DiffusionCommitHookEngine extends Phobject {
         throw new Exception(pht("Unknown VCS '%s!'", $vcs));
     }
 
-    if (strlen($raw_diff) >= $byte_limit) {
+    if (strlen($raw_diff ?? '') >= $byte_limit) {
       throw new Exception(
         pht(
           'The raw text of this change ("%s") is enormous (larger than %s '.

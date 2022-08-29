@@ -89,7 +89,7 @@ final class PhabricatorEditEngineSubtype
   }
 
   public function hasTagView() {
-    return (bool)strlen($this->getTagText());
+    return (bool)strlen($this->getTagText() ?? '');
   }
 
   public function newTagView() {
@@ -117,7 +117,7 @@ final class PhabricatorEditEngineSubtype
   }
 
   public static function validateSubtypeKey($subtype) {
-    if (strlen($subtype) > 64) {
+    if (strlen($subtype ?? '') > 64) {
       throw new Exception(
         pht(
           'Subtype "%s" is not valid: subtype keys must be no longer than '.
@@ -125,7 +125,7 @@ final class PhabricatorEditEngineSubtype
           $subtype));
     }
 
-    if (strlen($subtype) < 3) {
+    if (strlen($subtype ?? '') < 3) {
       throw new Exception(
         pht(
           'Subtype "%s" is not valid: subtype keys must have a minimum '.
@@ -178,7 +178,7 @@ final class PhabricatorEditEngineSubtype
 
       $map[$key] = true;
 
-      $name = $value['name'];
+      $name = $value['name'] ?? '';
       if (!strlen($name)) {
         throw new Exception(
           pht(

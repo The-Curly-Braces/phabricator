@@ -147,7 +147,8 @@ class AphrontRedirectResponse extends AphrontResponse {
     } else {
       // If this is a local resource, it must not have a domain set. This allows
       // us to raise a better error message than the check below can.
-      if (strlen($uri_object->getDomain())) {
+      $uriDomain = $uri_object->getDomain();
+      if ($uriDomain !== null && strlen($uriDomain)) {
         throw new Exception(
           pht(
             'Refusing to redirect to local resource "%s". The URI has a '.

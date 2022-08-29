@@ -526,13 +526,13 @@ final class PHUIDiffInlineCommentDetailView
     $old_lines = $context->getBodyLines();
     $old_lines = implode('', $old_lines);
     $old_lines = $head_lines.$old_lines.$tail_lines;
-    if (strlen($old_lines) && !preg_match('/\n\z/', $old_lines)) {
+    if (strlen($old_lines ?? '') && !preg_match('/\n\z/', $old_lines)) {
       $old_lines .= "\n";
     }
 
     $new_lines = $content_state->getContentSuggestionText();
     $new_lines = $head_lines.$new_lines.$tail_lines;
-    if (strlen($new_lines) && !preg_match('/\n\z/', $new_lines)) {
+    if (strlen($new_lines ?? '') && !preg_match('/\n\z/', $new_lines)) {
       $new_lines .= "\n";
     }
 

@@ -42,7 +42,7 @@ final class PhabricatorCustomFieldHeraldField extends HeraldField {
       // arrange a collision) but preserves backward compatibility.
 
       $full_key = $prefix.$key;
-      if (strlen($full_key) > $limit) {
+      if (strlen($full_key ?? '') > $limit) {
         $full_key = PhabricatorHash::digestToLength($full_key, $limit);
       }
 

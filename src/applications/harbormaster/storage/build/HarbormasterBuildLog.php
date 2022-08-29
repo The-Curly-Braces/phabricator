@@ -284,7 +284,7 @@ final class HarbormasterBuildLog
   }
 
   public function getRenderURI($lines) {
-    if (strlen($lines)) {
+    if (strlen($lines ?? '')) {
       $lines = '$'.$lines;
     }
 

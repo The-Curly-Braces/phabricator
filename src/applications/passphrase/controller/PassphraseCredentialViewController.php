@@ -196,7 +196,7 @@ final class PassphraseCredentialViewController extends PassphraseController {
     }
 
     $description = $credential->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $properties->addSectionHeader(
         pht('Description'),
         PHUIPropertyListView::ICON_SUMMARY);

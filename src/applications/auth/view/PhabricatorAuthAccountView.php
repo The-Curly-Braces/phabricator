@@ -29,13 +29,13 @@ final class PhabricatorAuthAccountView extends AphrontView {
     $realname = $account->getRealName();
 
     $use_name = null;
-    if (strlen($dispname)) {
+    if (strlen($dispname ?? '')) {
       $use_name = $dispname;
-    } else if (strlen($username) && strlen($realname)) {
+    } else if (strlen($username ?? '') && strlen($realname ?? '')) {
       $use_name = $username.' ('.$realname.')';
-    } else if (strlen($username)) {
+    } else if (strlen($username ?? '')) {
       $use_name = $username;
-    } else if (strlen($realname)) {
+    } else if (strlen($realname ?? '')) {
       $use_name = $realname;
     }
 

@@ -47,7 +47,7 @@ final class PhabricatorVCSResponse extends AphrontResponse {
     }
 
     $message = $this->getMessage();
-    if (strlen($message)) {
+    if (strlen($message ?? '')) {
       foreach (phutil_split_lines($message, false) as $line) {
         $headers[] = array(
           'X-Phabricator-Message',

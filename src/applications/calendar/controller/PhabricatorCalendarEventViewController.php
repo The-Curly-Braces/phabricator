@@ -515,7 +515,7 @@ final class PhabricatorCalendarEventViewController
     $properties = id(new PHUIPropertyListView())
       ->setUser($viewer);
 
-    if (strlen($event->getDescription())) {
+    if (strlen($event->getDescription() ?? '')) {
       $description = new PHUIRemarkupView($viewer, $event->getDescription());
       $properties->addTextContent($description);
       return $properties;

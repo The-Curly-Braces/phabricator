@@ -204,7 +204,7 @@ abstract class NuanceGitHubImportCursor
     $now = PhabricatorTime::getNow();
 
     $limit_ttl = null;
-    if (strlen($remaining)) {
+    if (strlen($remaining ?? '')) {
       $remaining = (int)$remaining;
       if (!$remaining) {
         $limit_ttl = (int)$limit_reset;

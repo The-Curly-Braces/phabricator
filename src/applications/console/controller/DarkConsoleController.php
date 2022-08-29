@@ -26,7 +26,7 @@ final class DarkConsoleController extends PhabricatorController {
     }
 
     $visible = $request->getStr('visible');
-    if (strlen($visible)) {
+    if (strlen($visible ?? '')) {
       $this->writeDarkConsoleSetting(
         PhabricatorDarkConsoleVisibleSetting::SETTINGKEY,
         (int)$visible);
@@ -34,7 +34,7 @@ final class DarkConsoleController extends PhabricatorController {
     }
 
     $tab = $request->getStr('tab');
-    if (strlen($tab)) {
+    if (strlen($tab ?? '')) {
       $this->writeDarkConsoleSetting(
         PhabricatorDarkConsoleTabSetting::SETTINGKEY,
         $tab);

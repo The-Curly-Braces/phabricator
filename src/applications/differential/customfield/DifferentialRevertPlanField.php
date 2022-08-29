@@ -53,7 +53,7 @@ final class DifferentialRevertPlanField
 
   public function updateAbstractDocument(
     PhabricatorSearchAbstractDocument $document) {
-    if (strlen($this->getValue())) {
+    if (strlen($this->getValue() ?? '')) {
       $document->addField('rvrt', $this->getValue());
     }
   }

@@ -165,12 +165,12 @@ final class PhutilDaemonHandle extends Phobject {
     list($stdout, $stderr) = $future->read();
     $future->discardBuffers();
 
-    if (strlen($stdout)) {
+    if (strlen($stdout ?? '')) {
       $this->didReadStdout($stdout);
     }
 
     $stderr = trim($stderr);
-    if (strlen($stderr)) {
+    if (strlen($stderr ?? '')) {
       foreach (phutil_split_lines($stderr, false) as $line) {
         $this->logMessage('STDE', $line);
       }

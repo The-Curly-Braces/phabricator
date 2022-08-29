@@ -197,7 +197,7 @@ final class HarbormasterBuildTarget
   }
 
   public function getName() {
-    if (strlen($this->name) && !$this->isAutotarget()) {
+    if (strlen($this->name ?? '') && !$this->isAutotarget()) {
       return $this->name;
     }
 

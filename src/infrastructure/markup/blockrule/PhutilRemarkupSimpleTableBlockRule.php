@@ -54,7 +54,7 @@ final class PhutilRemarkupSimpleTableBlockRule extends PhutilRemarkupBlockRule {
 
         // If it has only empty cells, it's an empty row.
 
-        if (strlen($cell)) {
+        if ($cell !== null && strlen($cell)) {
           if (preg_match('/^--+\z/', $cell)) {
             $any_header = true;
           } else {

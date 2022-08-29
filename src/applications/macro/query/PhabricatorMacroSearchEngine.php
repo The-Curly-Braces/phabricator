@@ -69,7 +69,7 @@ final class PhabricatorMacroSearchEngine
       $query->withNames($map['names']);
     }
 
-    if (strlen($map['nameLike'])) {
+    if (strlen($map['nameLike'] ?? '')) {
       $query->withNameLike($map['nameLike']);
     }
 

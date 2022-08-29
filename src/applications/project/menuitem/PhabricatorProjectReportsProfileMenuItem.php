@@ -46,7 +46,7 @@ final class PhabricatorProjectReportsProfileMenuItem
     PhabricatorProfileMenuItemConfiguration $config) {
     $name = $config->getMenuItemProperty('name');
 
-    if (strlen($name)) {
+    if (strlen($name ?? '')) {
       return $name;
     }
 

@@ -103,7 +103,7 @@ final class PhabricatorDashboardPanelTabsController
 
     $context_phid = $request->getStr('contextPHID');
     $context = null;
-    if (strlen($context_phid)) {
+    if (strlen($context_phid ?? '')) {
       $context = id(new PhabricatorObjectQuery())
         ->setViewer($viewer)
         ->withPHIDs(array($context_phid))

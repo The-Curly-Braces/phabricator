@@ -69,7 +69,7 @@ final class PhabricatorDaemonTasksTableView extends AphrontView {
         'action',
       ));
 
-    if (strlen($this->getNoDataString())) {
+    if (strlen($this->getNoDataString() ?? '')) {
       $table->setNoDataString($this->getNoDataString());
     }
 

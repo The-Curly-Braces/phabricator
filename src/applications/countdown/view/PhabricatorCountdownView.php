@@ -52,7 +52,7 @@ final class PhabricatorCountdownView extends AphrontView {
       $launch_date);
 
     $description = $countdown->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = new PHUIRemarkupView($this->getUser(), $description);
       $description = phutil_tag(
         'div',

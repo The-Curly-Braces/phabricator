@@ -22,7 +22,7 @@ final class PhabricatorProjectColumnNameTransaction
         '%s named this column %s.',
         $this->renderAuthor(),
         $this->renderNewValue());
-    } else if (strlen($new)) {
+    } else if (strlen($new ?? '')) {
       return pht(
         '%s renamed this column from %s to %s.',
         $this->renderAuthor(),

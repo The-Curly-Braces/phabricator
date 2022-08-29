@@ -70,7 +70,7 @@ final class AphrontMultipartParser extends Phobject {
           // indicates we've reached the end of the parts) or "\r\n" (which
           // indicates we should read the headers for the next part).
 
-          if (strlen($this->buffer) < 2) {
+          if (strlen($this->buffer ?? '') < 2) {
             // We don't have enough bytes yet, so wait for more.
             $continue = false;
             break;
@@ -107,7 +107,7 @@ final class AphrontMultipartParser extends Phobject {
           // headers and terminated by "\r\n". The section is terminated by
           // a line with no header on it.
 
-          if (strlen($this->buffer) < 2) {
+          if (strlen($this->buffer ?? '') < 2) {
             // We don't have enough data to find a "\r\n", so wait for more.
             $continue = false;
             break;
@@ -169,7 +169,7 @@ final class AphrontMultipartParser extends Phobject {
 
           $expect = "\r\n";
           $expect_len = strlen($expect);
-          if (strlen($this->buffer) < $expect_len) {
+          if (strlen($this->buffer ?? '') < $expect_len) {
             // We don't have enough bytes yet to know if this is "\r\n"
             // or not.
             $continue = false;
@@ -199,7 +199,7 @@ final class AphrontMultipartParser extends Phobject {
           $expect = '--'.$this->boundary;
           $expect_len = strlen($expect);
 
-          if (strlen($this->buffer) < $expect_len) {
+          if (strlen($this->buffer ?? '') < $expect_len) {
             // We don't have enough bytes yet, so wait for more.
             $continue = false;
             break;

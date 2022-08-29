@@ -70,7 +70,7 @@ final class PholioRemarkupRule extends PhabricatorObjectRemarkupRule {
       ->setUser($viewer)
       ->setMock($object);
 
-    if (strlen($options)) {
+    if (strlen($options ?? '')) {
       $parser = new PhutilSimpleOptions();
       $opts = $parser->parse(substr($options, 1));
 

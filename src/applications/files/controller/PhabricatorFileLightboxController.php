@@ -20,7 +20,7 @@ final class PhabricatorFileLightboxController
       return new Aphront404Response();
     }
 
-    if (strlen($comment)) {
+    if (strlen($comment ?? '')) {
       $xactions = array();
       $xactions[] = id(new PhabricatorFileTransaction())
         ->setTransactionType(PhabricatorTransactions::TYPE_COMMENT)

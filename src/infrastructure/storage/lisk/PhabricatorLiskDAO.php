@@ -194,7 +194,7 @@ abstract class PhabricatorLiskDAO extends LiskDAO {
       $class = substr($class, strlen($app));
     }
 
-    if (strlen($class)) {
+    if ($class !== null && strlen($class)) {
       return $app.'_'.$class;
     } else {
       return $app;
@@ -295,7 +295,7 @@ abstract class PhabricatorLiskDAO extends LiskDAO {
     }
 
     if (function_exists('mb_detect_encoding')) {
-      if (strlen($encoding)) {
+      if ($encoding !== null && strlen($encoding)) {
         $try_encodings = array(
           $encoding,
         );

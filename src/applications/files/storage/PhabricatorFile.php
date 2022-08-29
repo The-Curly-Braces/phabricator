@@ -211,7 +211,7 @@ final class PhabricatorFile extends PhabricatorFileDAO
     $file_data = Filesystem::readFile($tmp_name);
     $file_size = idx($spec, 'size');
 
-    if (strlen($file_data) != $file_size) {
+    if (strlen($file_data ?? '') != $file_size) {
       throw new Exception(pht('File size disagrees with uploaded size.'));
     }
 
@@ -406,7 +406,7 @@ final class PhabricatorFile extends PhabricatorFileDAO
         $exceptions);
     }
 
-    $file->setByteSize(strlen($data));
+    $file->setByteSize(strlen($data ?? ''));
 
     $hash = self::hashFileContent($data);
     $file->setContentHash($hash);
@@ -856,7 +856,7 @@ final class PhabricatorFile extends PhabricatorFileDAO
     // instance identity in the path allows us to distinguish between requests
     // originating from different instances but served through the same CDN.
     $instance = PhabricatorEnv::getEnvConfig('cluster.instance');
-    if (strlen($instance)) {
+    if ($instance && strlen($instance)) {
       $parts[] = '@'.$instance;
     }
 
@@ -903,7 +903,7 @@ final class PhabricatorFile extends PhabricatorFileDAO
     $parts[] = 'xform';
 
     $instance = PhabricatorEnv::getEnvConfig('cluster.instance');
-    if (strlen($instance)) {
+    if (strlen($instance ?? '')) {
       $parts[] = '@'.$instance;
     }
 
@@ -1278,7 +1278,7 @@ final class PhabricatorFile extends PhabricatorFileDAO
   public function getAltText() {
     $alt = $this->getCustomAltText();
 
-    if (strlen($alt)) {
+    if (strlen($alt ?? '')) {
       return $alt;
     }
 
@@ -1309,7 +1309,7 @@ final class PhabricatorFile extends PhabricatorFileDAO
     $parts = array();
 
     $name = $this->getName();
-    if (strlen($name)) {
+    if (strlen($name ?? '')) {
       $parts[] = $name;
     }
 

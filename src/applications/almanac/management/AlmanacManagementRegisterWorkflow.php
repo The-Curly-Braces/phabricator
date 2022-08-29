@@ -55,7 +55,7 @@ final class AlmanacManagementRegisterWorkflow
     $identify_as = $args->getArg('identify-as');
 
     $raw_device = $device_name;
-    if (strlen($identify_as)) {
+    if ($identify_as !== null && strlen($identify_as)) {
       $raw_device = $identify_as;
     }
 

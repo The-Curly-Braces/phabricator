@@ -285,7 +285,7 @@ final class PhabricatorPasswordAuthProvider extends PhabricatorAuthProvider {
     if ($request->isFormPost()) {
       if (!$require_captcha || $captcha_valid) {
         $username_or_email = $request->getStr('username');
-        if (strlen($username_or_email)) {
+        if (strlen($username_or_email ?? '')) {
           $user = id(new PhabricatorUser())->loadOneWhere(
             'username = %s',
             $username_or_email);

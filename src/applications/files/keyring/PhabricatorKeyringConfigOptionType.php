@@ -80,13 +80,13 @@ final class PhabricatorKeyringConfigOptionType
                 $name));
           }
 
-          if (strlen($material) != 32) {
+          if (strlen($material ?? '') != 32) {
             throw new Exception(
               pht(
                 'Keyring specifies an invalid key ("%s"): key material '.
                 'should be 32 bytes (256 bits) but has length %s.',
                 $name,
-                new PhutilNumber(strlen($material))));
+                new PhutilNumber(strlen($material ?? ''))));
           }
           break;
         default:

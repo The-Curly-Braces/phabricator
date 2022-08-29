@@ -200,14 +200,14 @@ final class DifferentialCommitMessageParser extends Phobject {
     if (isset($fields[$key_title]) && empty($fields[$key_summary])) {
       $lines = $fields[$key_title];
       for ($ii = 0; $ii < count($lines); $ii++) {
-        if (strlen(trim($lines[$ii])) == 0) {
+        if (strlen(trim($lines[$ii] ?? '')) == 0) {
           break;
         }
       }
       if ($ii != count($lines)) {
         $fields[$key_title] = array_slice($lines, 0, $ii);
         $summary = array_slice($lines, $ii);
-        if (strlen(trim(implode("\n", $summary)))) {
+        if (strlen(trim(implode("\n", $summary) ?? ''))) {
           $fields[$key_summary] = $summary;
         }
       }

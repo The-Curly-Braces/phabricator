@@ -163,7 +163,7 @@ final class PhabricatorSSHPassthruCommand extends Phobject {
       }
 
       $out_message = $command_channel->read();
-      if (strlen($out_message)) {
+      if ($out_message !== null && strlen($out_message)) {
         $out_message = $this->willReadData($out_message);
         if ($out_message !== null) {
           $io_channel->write($out_message);
@@ -201,7 +201,7 @@ final class PhabricatorSSHPassthruCommand extends Phobject {
 
   public function writeIORead($in_message) {
     $in_message = $this->willWriteData($in_message);
-    if (strlen($in_message)) {
+    if ($in_message !== null && strlen($in_message)) {
       $this->commandChannel->write($in_message);
     }
   }
@@ -210,7 +210,7 @@ final class PhabricatorSSHPassthruCommand extends Phobject {
     if ($this->willWriteCallback) {
       return call_user_func($this->willWriteCallback, $this, $message);
     } else {
-      if (strlen($message)) {
+      if ($message !== null && strlen($message)) {
         return $message;
       } else {
         return null;
@@ -222,7 +222,7 @@ final class PhabricatorSSHPassthruCommand extends Phobject {
     if ($this->willReadCallback) {
       return call_user_func($this->willReadCallback, $this, $message);
     } else {
-      if (strlen($message)) {
+      if ($message !== null && strlen($message)) {
         return $message;
       } else {
         return null;

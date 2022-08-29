@@ -105,7 +105,7 @@ final class PholioInlineController extends PholioController {
     if ($request->isFormPost()) {
       $v_content = $request->getStr('content');
 
-      if (strlen($v_content)) {
+      if (strlen($v_content ?? '')) {
         $inline->setContent($v_content);
         $inline->save();
         $dictionary = $inline->toDictionary();

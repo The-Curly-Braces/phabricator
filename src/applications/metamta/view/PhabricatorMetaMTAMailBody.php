@@ -45,7 +45,7 @@ final class PhabricatorMetaMTAMailBody extends Phobject {
    * @task compose
    */
   public function addRawSection($text) {
-    if (strlen($text)) {
+    if (strlen($text ?? '')) {
       $text = rtrim($text);
       $this->sections[] = $text;
       $this->htmlSections[] = phutil_escape_html_newlines(
@@ -81,7 +81,7 @@ final class PhabricatorMetaMTAMailBody extends Phobject {
   }
 
   public function addRawPlaintextSection($text) {
-    if (strlen($text)) {
+    if (strlen($text ?? '')) {
       $text = rtrim($text);
       $this->sections[] = $text;
     }

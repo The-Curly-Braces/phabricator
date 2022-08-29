@@ -88,7 +88,7 @@ final class HarbormasterBuildLintMessage
     $obj->setName($dict['name']);
 
     $description = idx($dict, 'description');
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $obj->setProperty('description', $description);
     }
 

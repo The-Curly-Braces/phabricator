@@ -33,7 +33,7 @@ final class DifferentialTestPlanField
 
   public function updateAbstractDocument(
     PhabricatorSearchAbstractDocument $document) {
-    if (strlen($this->getValue())) {
+    if (strlen($this->getValue() ?? '')) {
       $document->addField('plan', $this->getValue());
     }
   }

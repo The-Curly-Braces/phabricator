@@ -63,7 +63,7 @@ final class PhortuneMerchantDetailsController
     $view->addProperty(pht('Invoice From'), $invoice_from);
 
     $description = $merchant->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $description = new PHUIRemarkupView($viewer, $description);
       $view->addSectionHeader(
         pht('Description'),
@@ -72,7 +72,7 @@ final class PhortuneMerchantDetailsController
     }
 
     $contact_info = $merchant->getContactInfo();
-    if (strlen($contact_info)) {
+    if (strlen($contact_info ?? '')) {
       $contact_info = new PHUIRemarkupView($viewer, $contact_info);
       $view->addSectionHeader(
         pht('Contact Information'),
@@ -81,7 +81,7 @@ final class PhortuneMerchantDetailsController
     }
 
     $footer_info = $merchant->getInvoiceFooter();
-    if (strlen($footer_info)) {
+    if (strlen($footer_info ?? '')) {
       $footer_info = new PHUIRemarkupView($viewer, $footer_info);
       $view->addSectionHeader(
         pht('Invoice Footer'),

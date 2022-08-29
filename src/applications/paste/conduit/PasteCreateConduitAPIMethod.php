@@ -64,7 +64,7 @@ final class PasteCreateConduitAPIMethod extends PasteConduitAPIMethod {
       ->setTransactionType(PhabricatorPasteTitleTransaction::TRANSACTIONTYPE)
       ->setNewValue($title);
 
-    if (strlen($language)) {
+    if (strlen($language ?? '')) {
       $xactions[] = id(new PhabricatorPasteTransaction())
         ->setTransactionType(
           PhabricatorPasteLanguageTransaction::TRANSACTIONTYPE)

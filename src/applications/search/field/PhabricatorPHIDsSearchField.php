@@ -12,7 +12,7 @@ final class PhabricatorPHIDsSearchField
   }
 
   protected function newControl() {
-    if (strlen($this->getValueForControl())) {
+    if (strlen($this->getValueForControl() ?? '')) {
       return new AphrontFormTextControl();
     } else {
       return null;

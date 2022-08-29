@@ -58,7 +58,7 @@ final class PhabricatorSlowvoteEditor
     $body = parent::buildMailBody($object, $xactions);
     $description = $object->getDescription();
 
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $body->addRemarkupSection(
         pht('SLOWVOTE DESCRIPTION'),
         $object->getDescription());

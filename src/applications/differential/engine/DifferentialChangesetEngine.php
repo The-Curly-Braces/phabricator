@@ -195,7 +195,7 @@ final class DifferentialChangesetEngine extends Phobject {
           $text = trim($text);
           $files[$file][$line] = $text;
 
-          if (strlen($text) >= $min_width) {
+          if (strlen($text ?? '') >= $min_width) {
             $map[$text][] = array($file, $line);
           }
         }

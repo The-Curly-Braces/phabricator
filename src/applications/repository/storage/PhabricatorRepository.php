@@ -217,7 +217,7 @@ final class PhabricatorRepository extends PhabricatorRepositoryDAO
     $monograms[] = 'R'.$this->getID();
 
     $callsign = $this->getCallsign();
-    if (strlen($callsign)) {
+    if (strlen($callsign ?? '')) {
       $monograms[] = 'r'.$callsign;
     }
 
@@ -368,7 +368,7 @@ final class PhabricatorRepository extends PhabricatorRepositoryDAO
   }
 
   public static function assertValidRepositorySlug($slug) {
-    if (!strlen($slug)) {
+    if (!strlen($slug ?? '')) {
       throw new Exception(
         pht(
           'The empty string is not a valid repository short name. '.
@@ -444,7 +444,7 @@ final class PhabricatorRepository extends PhabricatorRepositoryDAO
   }
 
   public static function assertValidCallsign($callsign) {
-    if (!strlen($callsign)) {
+    if (!strlen($callsign ?? '')) {
       throw new Exception(
         pht(
           'A repository callsign must be at least one character long.'));

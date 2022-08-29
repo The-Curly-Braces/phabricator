@@ -43,7 +43,7 @@ final class PhutilLexerSyntaxHighlighter extends PhutilSyntaxHighlighter {
         $value = array($value);
       }
       foreach ($value as $part) {
-        if (strlen($part)) {
+        if ($part !== null && strlen($part)) {
           if ($type) {
             $result[] = phutil_tag(
               'span',

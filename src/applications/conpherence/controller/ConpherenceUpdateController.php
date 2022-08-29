@@ -74,7 +74,7 @@ final class ConpherenceUpdateController
           break;
         case ConpherenceUpdateActions::MESSAGE:
           $message = $request->getStr('text');
-          if (strlen($message)) {
+          if (strlen($message ?? '')) {
             $xactions = $editor->generateTransactionsFromText(
               $user,
               $conpherence,

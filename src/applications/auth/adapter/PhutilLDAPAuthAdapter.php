@@ -466,7 +466,7 @@ final class PhutilLDAPAuthAdapter extends PhutilAuthAdapter {
 
     // NOTE: ldap_bind() dumps cleartext passwords into logs by default. Keep
     // it quiet.
-    if (strlen($user)) {
+    if ($user !== null && strlen($user)) {
       $ok = @ldap_bind($conn, $user, $pass->openEnvelope());
     } else {
       $ok = @ldap_bind($conn);
@@ -475,7 +475,7 @@ final class PhutilLDAPAuthAdapter extends PhutilAuthAdapter {
     $profiler->endServiceCall($call_id, array());
 
     if (!$ok) {
-      if (strlen($user)) {
+      if ($user !== null && strlen($user)) {
         $this->raiseConnectionException(
           $conn,
           pht('Failed to bind to LDAP server (as user "%s").', $user));

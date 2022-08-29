@@ -495,7 +495,7 @@ abstract class DiffusionRequest extends Phobject {
     $pattern = '@(?:(?:^|[^$])(?:[$][$])*)[$]([\d,-]+)$@';
     if (preg_match($pattern, $blob, $matches)) {
       $result['line'] = $matches[1];
-      $blob = substr($blob, 0, -(strlen($matches[1]) + 1));
+      $blob = substr($blob, 0, -(strlen($matches[1] ?? '') + 1));
     }
 
     // We've consumed the line number if it exists, so unescape "$" in the
@@ -507,14 +507,14 @@ abstract class DiffusionRequest extends Phobject {
     // tag names or refs).
     if (preg_match('@(?:(?:^|[^;])(?:;;)*);([^;].*)$@', $blob, $matches)) {
       $result['commit'] = $matches[1];
-      $blob = substr($blob, 0, -(strlen($matches[1]) + 1));
+      $blob = substr($blob, 0, -(strlen($matches[1] ?? '') + 1));
     }
 
     // We've consumed the commit if it exists, so unescape ";" in the rest
     // of the string.
     $blob = str_replace(';;', ';', $blob);
 
-    if (strlen($blob)) {
+    if (strlen($blob ?? '')) {
       $result['path'] = $blob;
     }
 

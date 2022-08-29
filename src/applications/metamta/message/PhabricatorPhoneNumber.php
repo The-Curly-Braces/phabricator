@@ -6,7 +6,7 @@ final class PhabricatorPhoneNumber
   private $number;
 
   public function __construct($raw_number) {
-    $number = preg_replace('/[^\d]+/', '', $raw_number);
+    $number = preg_replace('/[^\d]+/', '', $raw_number ?? '');
 
     if (!preg_match('/^[1-9]\d{9,14}\z/', $number)) {
       throw new Exception(
@@ -19,7 +19,7 @@ final class PhabricatorPhoneNumber
 
     // If the number didn't start with "+" and has has 10 digits, assume it is
     // a US number with no country code prefix, like "(555) 555-5555".
-    if (!preg_match('/^[+]/', $raw_number)) {
+    if (!preg_match('/^[+]/', $raw_number ?? '')) {
       if (strlen($number) === 10) {
         $number = '1'.$number;
       }

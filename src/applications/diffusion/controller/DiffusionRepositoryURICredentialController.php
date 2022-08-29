@@ -117,7 +117,7 @@ final class DiffusionRepositoryURICredentialController
         ->setOptions($options);
 
       $default_user = $effective_uri->getUser();
-      if (strlen($default_user)) {
+      if (strlen($default_user ?? '')) {
         $control->setDefaultUsername($default_user);
       }
 

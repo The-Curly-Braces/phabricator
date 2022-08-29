@@ -1494,7 +1494,7 @@ abstract class PhabricatorApplicationTransaction
     switch ($this->getTransactionType()) {
       case PhabricatorTransactions::TYPE_COMMENT:
         $text = $this->getComment()->getContent();
-        if (strlen($text)) {
+        if (strlen($text ?? '')) {
           $fields[] = 'comment/'.$this->getID();
         }
         break;
@@ -1528,7 +1528,7 @@ abstract class PhabricatorApplicationTransaction
     switch ($this->getTransactionType()) {
       case PhabricatorTransactions::TYPE_COMMENT:
         $text = $this->getComment()->getContent();
-        if (strlen($text)) {
+        if (strlen($text ?? '')) {
           $body = $story->getMarkupFieldOutput('comment/'.$this->getID());
         }
         break;

@@ -27,7 +27,7 @@ final class ConpherenceThreadDatasource
 
     $results = array();
     foreach ($rooms as $room) {
-      if (strlen($room->getTopic())) {
+      if (strlen($room->getTopic() ?? '')) {
         $topic = $room->getTopic();
       } else {
         $topic = phutil_tag('em', array(), pht('No topic set'));

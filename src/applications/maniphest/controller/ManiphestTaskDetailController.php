@@ -411,7 +411,7 @@ final class ManiphestTaskDetailController extends ManiphestController {
     $section = null;
 
     $description = $task->getDescription();
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $section = new PHUIPropertyListView();
       $section->addTextContent(
         phutil_tag(

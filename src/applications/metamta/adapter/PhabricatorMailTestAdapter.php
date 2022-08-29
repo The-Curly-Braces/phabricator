@@ -111,7 +111,7 @@ final class PhabricatorMailTestAdapter
     $guts['ccs'] = $cc;
 
     $subject = $message->getSubject();
-    if (strlen($subject)) {
+    if (strlen($subject ?? '')) {
       $guts['subject'] = $subject;
     }
 

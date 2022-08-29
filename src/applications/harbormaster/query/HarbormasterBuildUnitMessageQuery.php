@@ -57,7 +57,7 @@ final class HarbormasterBuildUnitMessageQuery
     $indexes = array();
     foreach ($messages as $message) {
       $index = $message->getNameIndex();
-      if (strlen($index)) {
+      if (strlen($index ?? '')) {
         $indexes[$index] = $index;
       }
     }

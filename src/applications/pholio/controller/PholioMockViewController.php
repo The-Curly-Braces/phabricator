@@ -179,7 +179,7 @@ final class PholioMockViewController extends PholioController {
       ->setUser($viewer);
     $description = $mock->getDescription();
 
-    if (strlen($description)) {
+    if (strlen($description ?? '')) {
       $properties->addTextContent(
         new PHUIRemarkupView($viewer, $description));
       return id(new PHUIObjectBoxView())

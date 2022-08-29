@@ -61,7 +61,7 @@ final class DifferentialHovercardEngineExtension
       $viewer->renderHandleList($reviewer_phids)->setAsInline(true));
 
     $summary = $revision->getSummary();
-    if (strlen($summary)) {
+    if (strlen($summary ?? '')) {
       $summary = id(new PhutilUTF8StringTruncator())
         ->setMaximumGlyphs(120)
         ->truncateString($summary);

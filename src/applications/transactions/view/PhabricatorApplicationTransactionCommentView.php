@@ -585,7 +585,7 @@ final class PhabricatorApplicationTransactionCommentView
     }
 
     foreach ($groups as $group_key => $group_items) {
-      if (strlen($group_key)) {
+      if (strlen($group_key ?? '')) {
         $group_label = idx($group_labels, $group_key, $group_key);
         $options[$group_label] = ipull($group_items, 'label');
       } else {

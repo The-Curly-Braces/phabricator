@@ -59,7 +59,7 @@ final class PhabricatorAsanaAuthProvider
       return null;
     }
 
-    if (strlen($uri->getFragment())) {
+    if (strlen($uri->getFragment() ?? '')) {
      return null;
     }
 

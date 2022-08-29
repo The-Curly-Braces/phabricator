@@ -73,7 +73,7 @@ final class DifferentialDiffExtractionEngine extends Phobject {
     $raw_diff = $diff_file->loadFileData();
 
     // TODO: Support adds, deletes and moves under SVN.
-    if (strlen($raw_diff)) {
+    if (strlen($raw_diff ?? '')) {
       $changes = id(new ArcanistDiffParser())->parseDiff($raw_diff);
     } else {
       // This is an empty diff, maybe made with `git commit --allow-empty`.

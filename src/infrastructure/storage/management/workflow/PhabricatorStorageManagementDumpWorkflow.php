@@ -244,7 +244,8 @@ final class PhabricatorStorageManagementDumpWorkflow
 
     $password = $api->getPassword();
     if ($password) {
-      if (strlen($password->openEnvelope())) {
+      $openedPassword = $password->openEnvelope() ?? '';
+      if (strlen($openedPassword ?? '')) {
         $has_password = true;
       }
     }
@@ -371,7 +372,7 @@ final class PhabricatorStorageManagementDumpWorkflow
           list($stdout, $stderr) = $future->read();
           $future->discardBuffers();
 
-          if (strlen($stderr)) {
+          if ($stderr !== null && strlen($stderr)) {
             fwrite(STDERR, $stderr);
           }
 
@@ -432,7 +433,7 @@ final class PhabricatorStorageManagementDumpWorkflow
       throw new Exception(
         pht(
           'Failed to write %d byte(s) to file "%s".',
-          new PhutilNumber(strlen($data)),
+          new PhutilNumber(strlen($data ?? '')),
           $output_file));
     }
   }

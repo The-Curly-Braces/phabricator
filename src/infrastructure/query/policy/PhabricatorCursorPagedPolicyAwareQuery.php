@@ -2449,7 +2449,7 @@ abstract class PhabricatorCursorPagedPolicyAwareQuery
     PhabricatorSearchNgrams $index,
     $value) {
 
-    if (strlen($value)) {
+    if ($value !== null && strlen($value)) {
       $this->ngrams[] = array(
         'index' => $index,
         'value' => $value,

@@ -216,7 +216,7 @@ final class PhabricatorRepositoryPushMailWorker
       }
 
       $summary = null;
-      if (strlen(idx($commit_info, 'summary'))) {
+      if (strlen(idx($commit_info, 'summary') ?? '')) {
         $summary = ' '.$commit_info['summary'];
       }
 

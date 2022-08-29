@@ -317,7 +317,7 @@ final class PhabricatorSMSAuthFactor
       return $result->setAnsweredChallenge($challenge);
     }
 
-    if (strlen($code)) {
+    if (strlen($code ?? '')) {
       $error_message = pht('Invalid');
     } else {
       $error_message = pht('Required');

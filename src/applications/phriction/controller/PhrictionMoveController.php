@@ -35,7 +35,7 @@ final class PhrictionMoveController extends PhrictionController {
 
       // If what the user typed isn't what we're actually using, warn them
       // about it.
-      if (strlen($v_slug)) {
+      if (strlen($v_slug ?? '')) {
         $no_slash_slug = rtrim($normal_slug, '/');
         if ($normal_slug !== $v_slug && $no_slash_slug !== $v_slug) {
           return $this->newDialog()

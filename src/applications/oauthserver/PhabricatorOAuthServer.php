@@ -201,7 +201,7 @@ final class PhabricatorOAuthServer extends Phobject {
     $uri = new PhutilURI($raw_uri);
 
     $fragment = $uri->getFragment();
-    if (strlen($fragment)) {
+    if (strlen($fragment ?? '')) {
       throw new Exception(
         pht(
           'OAuth application redirect URIs must not contain URI '.

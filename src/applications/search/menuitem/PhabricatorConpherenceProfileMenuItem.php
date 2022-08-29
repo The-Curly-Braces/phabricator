@@ -69,8 +69,8 @@ final class PhabricatorConpherenceProfileMenuItem
       return pht('(Restricted/Invalid Conpherence)');
     }
 
-    $name = $this->getName($config);
-    if (strlen($name)) {
+    $name = $this->getName($config ?? '');
+    if (strlen($name ?? '')) {
       return $name;
     }
 

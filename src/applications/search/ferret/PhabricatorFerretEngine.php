@@ -99,7 +99,7 @@ abstract class PhabricatorFerretEngine extends Phobject {
     $term_corpus = preg_replace('/\s+/u', ' ', $term_corpus);
     $term_corpus = trim($term_corpus, ' ');
 
-    if (strlen($term_corpus)) {
+    if (strlen($term_corpus ?? '')) {
       $term_corpus = ' '.$term_corpus.' ';
     }
 
